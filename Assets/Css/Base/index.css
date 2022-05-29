@@ -1,0 +1,2126 @@
+
+:root {
+    --ColorBase: #FF645B;
+    --Compl-Red: #232222;
+    --Compl-GreenLight: #b3ffe2;
+    --Compl-Blue: #aed9e0;
+    --Compl-Yellow: #faf3dd;
+    --Compl-Black: #3b3d3d;
+    --ColorValItem: #777777;
+    --ColorTitle: #5e6472;
+    --ColorText: #393939;
+    --ColorLineBottom: #4292e3;
+}
+
+::selection {
+    color: var(--ColorBase);
+    background: #ffffff;
+}
+
+.ColorBase {
+    color: var(--ColorBase);
+}
+
+.FontFamily_KalameBalack {
+    font-family: KalameBlack;
+}
+
+.anychart-credits-text {
+    display: none;
+}
+
+.anychart-credits-logo {
+    display: none;
+}
+
+
+table {
+    overflow: auto !important;
+}
+
+@font-face {
+    font-family: 'B-NasimBold';
+    src: url("/assets/Font/B-NasimBold.woff");
+}
+
+@font-face {
+    font-family: 'Terafik';
+    src: url("/assets/Font/Terafik.woff");
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url("/assets/Font/Raleway.ttf");
+}
+
+@font-face {
+    font-family: 'GoodUnicorn';
+    src: url("/assets/Font/GoodUnicorn.ttf");
+}
+
+/*@font-face {*/
+/*    font-family: 'BadKhat';*/
+/*    src: url("/Static/Font/BadKhat.woff");*/
+/*}*/
+
+/*@font-face {*/
+/*    font-family: 'Merchant';*/
+/*    src: url("/Static/Font/English/Merchant.woff");*/
+/*}*/
+
+@font-face {
+    font-family: 'Shabnam';
+    src: url("/assets/Font/Shabnam.woff");
+}
+
+@font-face {
+    font-family: 'KalameBlack';
+    src: url("/assets/Font/Kalameh_Black.woff");
+}
+
+@font-face {
+    font-family: 'MjBeirutMd';
+    src: url("/assets/Font/MjBeirutMd.woff");
+}
+
+@font-face {
+    font-family: 'MjCasablancaHeavy';
+    src: url("/assets/Font/Mj-Casablanca-Heavy.woff");
+}
+
+@font-face {
+    font-family: 'Koodak';
+    src: url("/assets/Font/Koodak.woff");
+}
+
+/*@font-face {*/
+/*    font-family: 'BadKhat2';*/
+/*    src: url("/Static/Font/BadKhat2.woff");*/
+/*}*/
+
+/*@font-face {*/
+/*    font-family: 'Sade';*/
+/*    src: url("/Static/Font/Sade.woff");*/
+/*}*/
+
+@font-face {
+    font-family: 'IranSens';
+    src: url("/assets/Font/IranSens.woff");
+}
+
+@font-face {
+    font-family: 'Vazir';
+    src: url("/assets/Font/Vazir-Regular.woff");
+}
+
+/*@font-face {*/
+/*    font-family: 'Aleo';*/
+/*    src: url("/Static/Font/English/Aleo-Regular.woff");*/
+/*}*/
+
+/*@font-face {*/
+/*    font-family: 'PTF';*/
+/*    src: url("/Static/Font/English/PTF.woff");*/
+/*}*/
+
+/*@font-face {*/
+/*    font-family: 'LebrationSerif';*/
+/*    src: url("/Static/Font/English/LiberationSerif-Regular.woff");*/
+/*}*/
+
+/*@font-face {*/
+/*    font-family: 'Vollkoren';*/
+/*    src: url("/Static/Font/English/Vollkoren.woff");*/
+/*}*/
+
+@font-face {
+    font-family: 'Yekan';
+    src: url("/assets/Font/Yekan.woff");
+}
+
+/*@font-face {*/
+/*    font-family: 'BZaman';*/
+/*    src: url("/Static/Font/NumberPersian/BZaman.woff");*/
+/*}*/
+
+/*@font-face {*/
+/*    font-family: 'BMah';*/
+/*    src: url("/Static/Font/NumberPersian/BMah.woff");*/
+/*}*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    direction: rtl;
+    text-align: right;
+}
+
+html, body {
+    scroll-behavior: smooth !important;
+    font-family: Vazir !important;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: #d4d4d4;
+    margin-right: 2px;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: #333333;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+.BaseColor {
+    background: #17c3b2;
+    color: white;
+}
+
+
+.BlurAllElementsExceptMenu > *:not(.Container_More_Hamburger) > :not(.HamburgerMenu_Header) {
+    filter: blur(2.5px);
+}
+
+.BlurAllElementsExceptMessage_Alert > :not(.ContainerMessage_Alert) {
+    filter: blur(8px);
+}
+
+.BlurAllElementsExceptContainerBlur * :not(.ContianerBlur):not(.ContainerBlur *):not(.ContainerBlur):not(.NotificationMessage):not(.NotificationMessage *) {
+    filter: blur(5px);
+}
+
+.DisabledAllElementsExceptLoadingNotification *:not( .LoadingNotification ):not(.LoadingNotification_Icon):not(.LoadingNotification_Text):not(.NotificationMessage):not(.NotificationMessage *) {
+    filter: brightness(80%) blur(2px);
+}
+
+
+.ContainerTitle p {
+    font-family: 'KalameBlack';
+}
+
+
+.ContainerBlur {
+    position: absolute;
+    top: 10%;
+    width: 80%;
+    right: 10%;
+    background: rgb(240, 245, 255);
+    box-shadow: 0 0 0 100000px rgba(0, 0, 0, .5);
+    z-index: 999999;
+    padding: 4px;
+    border-radius: 7px;
+    padding-top: 0;
+    padding-bottom: 10px;
+    border: 1px solid #e1e1e1;
+}
+
+.ContainerBlur[Size='Small'] {
+    width: 40%;
+    right: 30%;
+}
+
+
+.ContainerContentBlur {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    padding: 5px;
+    overflow-y: auto;
+}
+
+
+.ContainerBlurIconClose {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 4px;
+    margin-right: 7px;
+    font-size: 120%;
+}
+
+
+a {
+    text-decoration: none !important;
+    background: none !important;
+}
+
+hr {
+    width: 50%;
+    background: #f7f7f7;
+}
+
+input[type=number] {
+    text-align: left;
+    direction: ltr;
+}
+
+.fa-stars {
+    color: #ff952f;
+}
+
+.SplitPriceNumber {
+    direction: ltr;
+    font-family: Yekan;
+}
+
+.PriceNumber {
+    display: inline-block !important;
+    direction: ltr;
+}
+
+.Large {
+    font-size: 115% !important;
+}
+
+.Small {
+    font-size: 75%;
+}
+
+.TitlePrice_Toman {
+    display: inline-block !important;
+    font-size: 80%;
+    font-family: IranSens !important;
+    margin-right: 5px;
+    color: #626262;
+    font-weight: bold;
+}
+
+.AddToman {
+    color: #626262;
+    font-weight: bold;
+    color: rgba(69, 158, 236, 0.95);
+}
+
+.SplitNumber {
+    direction: rtl;
+}
+
+.TitlePriceProductCart {
+    color: #aaaaaa !important;
+}
+
+.ContainerNotFoundContent {
+    margin: 12px auto;
+    margin-bottom: 18px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.ContainerNotFoundContent div {
+    margin: 0;
+    margin-top: 10px;
+    font-size: 105%;
+    display: inline-block;
+    border: 2px solid rgba(255, 70, 69, 0.1);
+    background: rgba(255, 70, 69, 0.1);
+    color: rgba(255, 70, 69, 1);
+    padding: 6px 20px;
+    border-radius: 4px;
+    width: 30%;
+}
+
+.BtnStyle_None {
+    background: none;
+    outline: none;
+    border: none;
+}
+
+.BtnStyle_1 {
+    padding: 6px;
+    width: 85px;
+    border-radius: 4px;
+    background: var(--ColorBase);
+    color: #ffffff;
+    transition: box-shadow .1s, background-color .15s;
+    margin: 5px;
+    border: none;
+}
+
+.BtnStyle_1:focus {
+    background: #00e1c0;
+    color: white;
+}
+
+.BtnStyle_1:active {
+    box-shadow: none;
+    transform: scale(.95);
+}
+
+.BtnStyle_1:hover {
+    background: #00e1c0;
+    color: white;
+}
+
+.BtnStyle_1_OutLine {
+    padding: 6px;
+    width: 85px;
+    border-radius: 4px;
+    background: inherit;
+    color: var(--ColorBase);
+    border: 1px solid var(--ColorBase);
+    transition: box-shadow .1s, background-color .15s;
+    margin: 5px;
+}
+
+.BtnStyle_1_OutLine:focus {
+    background: #00e1c0;
+    color: white;
+}
+
+.BtnStyle_1_OutLine:active {
+    box-shadow: none;
+    transform: scale(.95);
+}
+
+.BtnStyle_1_OutLine:hover {
+    background: #00e1c0;
+    color: white;
+}
+
+.BtnStyle_5 {
+    border: none;
+    padding: 6px;
+    width: 80px;
+    border-radius: 4px;
+    box-shadow: -1px -1px 2px #eeeeee, 1px 2px 4px #dddddd, 0 0 20px #dddddd;
+    background: #21b35a;
+    color: #f9f9f9;
+    transition: box-shadow .1s, background-color .15s;
+    margin: 5px;
+    border: 1px solid #21b35a;
+}
+
+.BtnStyle_5:focus {
+    outline: none;
+}
+
+.BtnStyle_5:active {
+    box-shadow: none;
+    transform: scale(.95);
+}
+
+.BtnStyle_5:hover {
+    background: #218f47;
+    color: #f9f9f9;
+}
+
+.BtnStyle_6 {
+    border: none;
+    padding: 6px;
+    width: 80px;
+    border-radius: 4px;
+    box-shadow: -1px -1px 2px #eeeeee, 1px 2px 4px #dddddd, 0 0 20px #dddddd;
+    background: #3b7db3;
+    color: #f9f9f9;
+    transition: box-shadow .1s, background-color .15s;
+    margin: 5px;
+}
+
+.BtnStyle_6:focus {
+    outline: none;
+}
+
+.BtnStyle_6:active {
+    box-shadow: none;
+    transform: scale(.95);
+}
+
+.BtnStyle_6:hover {
+    background: #294d8f;
+    color: #f9f9f9;
+}
+
+.BtnStyle_2 {
+    padding: 10px 20px;
+    border: none;
+    margin: -2px !important;
+    transition: all .15s;
+}
+
+.BtnStyle_2:focus {
+    outline: none;
+}
+
+.BtnStyle_2:active {
+    box-shadow: none !important;
+    transform: scale(.9);
+}
+
+.BtnStyle_2:first-child {
+    border-radius: 0 5px 5px 0;
+    box-shadow: 2px 0 5px #999999;
+}
+
+.BtnStyle_2:last-child {
+    border-radius: 5px 0 0 5px;
+    box-shadow: -2px 0 5px #999999;
+}
+
+.BtnStyle_3 {
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    box-shadow: 0 2px 4px #eeeeee;
+    transition: all .15s, background-color 0s;
+}
+
+.BtnStyle_3:hover {
+    background: #ccffd5;
+}
+
+
+.BtnStyle_10 {
+    background: #3ea7f0;
+    padding: 3px 30px !important;
+    border-radius: 100px;
+    border: none !important;
+    box-shadow: 0 5px 5px rgba(62, 167, 240, 0.3);
+}
+
+.BtnStyle_10 p {
+    color: white !important;
+}
+
+.BtnStyle_10:hover p {
+    color: white;
+}
+
+.BtnStyle_10:hover {
+    background: #3b9de3;
+}
+
+.BtnStyle_10_OutLine {
+    padding: 2px 10px !important;
+    border-radius: 100px;
+    border: 1px solid #3ea7f0;
+}
+
+.BtnStyle_10_OutLine p {
+    color: #3ea7f0 !important;
+}
+
+.BtnStyle_10_OutLine:hover {
+    background: #3ea7f0;
+}
+
+.BtnStyle_10_OutLine:hover p {
+    color: white !important;
+}
+
+.BtnStyle_4 {
+    border-radius: 30px;
+    padding: 6px 4%;
+    background: #3d92ff !important;
+    text-align: left;
+    box-shadow: 0 0 15px #bbbbbb;
+    color: white !important;
+    font-size: 105%;
+    transition: background-color .3s;
+}
+
+.BtnStyle_4:hover {
+    background: #1a5aff !important;
+}
+
+
+.BtnStyle_8 {
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 90%;
+    border: none;
+    outline: none;
+    box-shadow: 0 5px 7px #bbbbbb;
+    color: white;
+    background: #4b8bff;
+    transition: box-shadow .3s;
+}
+
+.BtnStyle_8:hover {
+    animation: AnimationToTop .3s forwards;
+    box-shadow: 0 0 6px #688ff4;
+}
+
+.BtnStyle_8:active {
+    transform: scale(.99) !important;
+}
+
+.BtnStyle_9 {
+    display: inline-block;
+    outline: none;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 150px;
+    transition: all .15s;
+    background: #49608f;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.BtnStyle_9 i {
+    position: absolute;
+    right: 101%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    color: white;
+    padding-top: 7px;
+    font-size: 180%;
+    border-radius: inherit;
+    transition: all .2s;
+}
+
+.BtnStyle_9:hover i {
+    right: 0;
+}
+
+.BtnStyle_9:active {
+    transform: scale(.95);
+}
+
+.BtnStyle_11 {
+    background: #FF615C !important;
+    color: #ffffff !important;
+    box-shadow: 0 5px 8px rgba(255, 119, 107, 0.2);
+    padding: 10px 17px;
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    position: relative;
+    transition: all .3s;
+}
+
+.BtnStyle_11:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    background: #ffffff;
+    border-radius: 5px;
+    transition: all .2s;
+}
+
+
+.BtnStyle_11:hover {
+    background: #ff5953 !important;
+    box-shadow: 0 2px 2px rgba(255, 119, 107, 0.9) !important;
+}
+
+.BtnStyle_11:hover:after {
+    width: 0 !important;
+    height: 0 !important;
+}
+
+.BtnStyle_11:focus:after {
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(255, 255, 255, 0) !important;
+}
+
+.BtnStyle_11:active:after {
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(255, 255, 255, 0) !important;
+}
+
+
+.BtnStyleActive_1 {
+    background: #3ad886 !important;
+    color: white !important;
+    border: none !important;
+    box-shadow: 0 3px 5px #dddddd;
+}
+
+.BtnStyleActive_1 > * {
+    background: #3ad886 !important;
+    color: white !important;
+    border: none !important;
+}
+
+.BtnStyleAlert_1 {
+    border: none;
+    padding: 7px;
+    width: 80px;
+    border-radius: 4px;
+    box-shadow: -1px -1px 2px #eeeeee, 1px 2px 4px #dddddd;
+    background: rgba(247, 84, 73, 0.9);
+    color: #ffffff;
+    margin: 5px;
+    transition: box-shadow .1s, all .15s;
+}
+
+.BtnStyleAlert_1:hover {
+    background: rgba(237, 41, 43, 0.9);
+}
+
+.BtnStyleAlert_1:focus {
+    outline: none;
+}
+
+.BtnStyleAlert_1:active {
+    box-shadow: none;
+    transform: scale(.9);
+}
+
+.ActiveIconStyle_1 {
+    color: #17c3b2 !important;
+    background: #fafafa !important;
+    box-shadow: none !important;
+    border: 1px solid #eeeeee;
+    border-radius: 7px;
+}
+
+.ActiveIconStyle_1 i {
+    color: #17c3b2 !important;
+    background: #fafafa !important;
+}
+
+.ActiveIconStyle_2 {
+    color: #00aa7b;
+    /*   background: #ffffff !important;*/
+}
+
+.ActiveIconStyle_2:before {
+    content: ' ';
+}
+
+.ActiveBtnStyle_1 {
+    background: #08beb6 !important;
+    color: white !important;
+}
+
+.ActiveBtnStyle_1:focus {
+    outline: none;
+}
+
+.ActiveBtnStyle_1:hover {
+    background: #08d4cc !important;
+}
+
+.BGSuccessStyle_1 {
+    background: rgb(210, 255, 221) !important;
+    border: 1px dashed #0be164;
+}
+
+.BGAlertStyle_1 {
+    background: rgb(255, 226, 233) !important;
+    border: 1px dashed #ff2132;
+}
+
+
+.BGNormalStyle_1 {
+    background: #fbfbfb;
+    border: 1px solid #d3d3d3;
+    border-radius: 5px;
+}
+
+.TextStyle_1 {
+    background: #fffffa;
+    color: #1b1e21;
+    border: 1px solid #e5e5e5;
+    padding: 2px;
+    border-radius: 4px;
+}
+
+.Text_Sm_Size {
+    font-size: 60%;
+}
+
+.fa-times {
+    color: #FFA69E;
+    transition: all .3s;
+}
+
+.fa-times:hover {
+    transform: rotateZ(90deg);
+}
+
+.InputValid {
+    border: 1px solid var(--ColorBase) !important;
+    box-shadow: none !important;
+    border-radius: 4px;
+}
+
+.InputInValid {
+    border: 1px solid #ff5973 !important;
+}
+
+.Label {
+    font-size: 80%;
+    color: #666666;
+    margin: 0;
+    margin-left: 2px;
+    display: inline-block;
+}
+
+.Label::after {
+    content: ' :';
+}
+
+.ResultField {
+    margin: 0;
+    display: inline-block;
+}
+
+
+.Disabled {
+    opacity: .45 !important;
+    cursor: not-allowed !important;
+}
+
+.Disabled > * {
+    cursor: not-allowed !important;
+}
+
+.Disabled:hover {
+    transform: none;
+}
+
+button:focus {
+    outline: none;
+}
+
+.BtnClose {
+    background: #efefef;
+    box-shadow: 0 0 5px #b0b0b0;
+    float: right;
+    font-size: 130%;
+    width: 30px;
+    height: 30px;
+    padding-top: 6px;
+    text-align: center;
+    border-radius: 50%;
+    margin: 4px 3px 10px 0;
+    cursor: pointer;
+}
+
+
+.ActiveButtons {
+    background: #17c3b2;
+    color: white;
+    opacity: 1;
+    border-radius: 5px;
+    cursor: default;
+}
+
+.ContainerMessage_Alert {
+    display: inline-block;
+    box-shadow: 0 0 0 100000px rgba(0, 0, 0, .5);
+    background: #ffffff;
+    position: fixed !important;
+    top: 20%;
+    z-index: 12;
+    text-align: center;
+    padding: 90px;
+    padding-bottom: 100px;
+    border-radius: 5px;
+    animation: AnimationShowMessageAlert .5s;
+}
+
+@keyframes AnimationShowMessageAlert {
+    0% {
+        transform: translateY(-120px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.TextMessage_Alert {
+    font-size: 90%;
+    border-bottom: 1px solid #e7e7e7;
+    padding-bottom: 15px;
+}
+
+.TextMessage_Alert p {
+    text-align: center;
+    width: 100%;
+    color: #ffb44e !important;
+    margin-top: 5px;
+    word-break: break-word;
+    font-size: 90%;
+}
+
+.BtnClose1_Alert {
+    position: absolute;
+    right: 1%;
+    top: 1%;
+    color: #ff4c51;
+    font-size: 110%;
+    cursor: pointer;
+}
+
+.BtnClose1_Alert:hover {
+    color: #ff282c;
+}
+
+.BtnClose_Alert {
+    font-weight: bold;
+    background: rgba(255, 102, 108, 0.7);
+    position: absolute;
+    right: 1%;
+    bottom: 2%;
+    color: #464646;
+}
+
+.BtnClose_Alert:hover {
+    background: rgba(255, 102, 108, 0.85) !important;
+}
+
+.BtnClose_Alert:focus {
+    background: rgba(255, 102, 108, 0.9) !important;
+    color: #ffffff;
+}
+
+.BtnOk_Alert {
+    font-weight: bold;
+    background: rgb(81, 255, 163);
+    position: absolute;
+    left: 1%;
+    bottom: 2%;
+    color: #464646;
+}
+
+.BtnOk_Alert:hover {
+    background: rgb(25, 232, 145) !important;
+    color: #ffffff;
+}
+
+.BtnOk_Alert:focus {
+    background: rgb(12, 232, 146) !important;
+    color: #ffffff;
+}
+
+.ContainerMessage_Alert button {
+    border: none;
+    padding: 7px;
+}
+
+.ContainerMessage_Alert button:focus {
+    outline: none;
+}
+
+
+.LoadingNotification {
+    margin: auto;
+    background: white;
+    height: 20%;
+    width: 20%;
+    text-align: center;
+    position: fixed;
+    top: 40%;
+    left: 40%;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #777777;
+}
+
+.LoadingNotification_Icon {
+    font-size: 300%;
+    margin: 0;
+    position: absolute;
+    top: 40%;
+    left: 0;
+    width: 100%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.LoadingNotification_Text {
+    margin-top: 3px;
+    font-size: 110%;
+    color: #119951;
+}
+
+
+.HamburgerMenu_Header {
+    margin: 0;
+    float: left;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    display: none;
+}
+
+.HamburgerMenu_Header i {
+    width: 100%;
+    height: 100%;
+    background: #efefef;
+    box-shadow: 0px 0px 2px #f9f9f9;
+    text-align: center;
+    padding-top: 20px;
+    border-radius: 50%;
+}
+
+
+.Container_More_Hamburger {
+    position: absolute;
+    box-shadow: 0px 0px 7px #d0d0d0;
+    background: #ffffff;
+    left: 0;
+    text-align: center;
+    border-radius: 6px;
+    width: 0;
+    overflow: hidden;
+    z-index: 1;
+    transition: width .35s;
+}
+
+.Container_More_Hamburger div {
+    padding: 10px;
+}
+
+.Container_More_Hamburger a {
+    color: black;
+    text-decoration: none;
+}
+
+.ContainerAccount {
+    box-shadow: 0px 0px 6px #bfbfbf;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    margin-top: 4px;
+}
+
+.InfoSliders {
+    display: inline-block !important;
+    width: 18%;
+    height: 100%;
+    float: right;
+}
+
+.InfoSliders img {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+}
+
+.Sliders {
+    display: inline-block;
+    text-align: center;
+    background: none;
+    width: 45%;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.Slider {
+    text-align: center;
+    right: -101%;
+    top: 0;
+    position: absolute;
+    width: 0;
+    height: 100%;
+    background: #f5f5f5;
+    border: 1px solid #d5d5d5d5;
+}
+
+.Slider img {
+    width: 100%;
+    height: 100%;
+}
+
+.BtnNextSlider {
+    position: absolute;
+    right: 0;
+    top: 45%;
+}
+
+.BtnPrevSlider {
+    position: absolute;
+    left: 0;
+    top: 45%;
+}
+
+.Sliders .BtnPrevSlider {
+    padding: 10px;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: margin .2s;
+    background: none;
+    font-size: 150%;
+    color: rgba(81, 81, 81, 0.70);
+}
+
+.Sliders .BtnNextSlider {
+    padding: 10px;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: margin .2s;
+    background: none;
+    font-size: 150%;
+    color: rgba(81, 81, 81, 0.70);
+}
+
+.Sliders button:focus {
+    outline: none;
+}
+
+.Sliders button[State=Disabled] {
+    opacity: .2;
+}
+
+.BtnPrevSlider:hover {
+    margin-left: 4px;
+    color: rgba(81, 81, 81, 1);
+}
+
+.BtnNextSlider:hover {
+    margin-right: 4px;
+    color: rgba(81, 81, 81, 1);
+}
+
+.SliderActive {
+    right: 0;
+    width: 100%;
+    transition: all .7s;
+}
+
+
+.AnimationLoadingDots:after {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    animation: AnimationLoadingDots steps(4, end) 1.8s infinite;
+    content: "...";
+    color: var(--ColorBase);
+    width: 0;
+}
+
+
+.AnimationPulse {
+    animation: AnimationPulse 400ms forwards;
+}
+
+.AnimationRotate {
+    animation: AnimationRotate 300ms forwards;
+}
+
+
+.ButtonGoToTopPage {
+    position: fixed;
+    right: .7%;
+    bottom: 0;
+    padding: 5px;
+    border-radius: 30px;
+    font-size: 200%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .6s;
+    z-index: 11;
+}
+
+.ButtonGoToTopPage i {
+    cursor: pointer;
+    color: #ff4374;
+}
+
+.ButtonGoToTopIsShow {
+    opacity: 1;
+    visibility: visible;
+}
+
+#ContainerNotificationsMessage {
+    position: fixed;
+    top: 1%;
+    right: 1%;
+    z-index: 9999999;
+    max-height: 100vh;
+    overflow-y: auto;
+}
+
+.NotificationMessage {
+    position: relative;
+    padding: 4px;
+    margin: 10px;
+    width: 300px;
+    box-shadow: 0 5px 8px rgba(148, 148, 148, 0.35);
+    direction: rtl;
+    text-align: center;
+    border-radius: 4px;
+    background: #ffffff;
+    transition: all 1s;
+    animation: ShowNotification_Animation_1 .25s;
+}
+
+@keyframes ShowNotification_Animation_1 {
+    0% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateX(0) translateY(0);
+    }
+}
+
+.LevelOfNecessity_1 {
+    width: 250px;
+}
+
+.LevelOfNecessity_1 p {
+    font-size: 90%;
+}
+
+.LevelOfNecessity_2 {
+    width: 280px;
+}
+
+.LevelOfNecessity_2 p {
+    font-size: 95%;
+}
+
+.LevelOfNecessity_3 {
+    width: 330px;
+}
+
+.LevelOfNecessity_3 p {
+    font-size: 100%;
+}
+
+.LevelOfNecessity_4 {
+    width: 350px;
+}
+
+.LevelOfNecessity_4 p {
+    font-size: 110%;
+}
+
+.LevelOfNecessity_5 {
+    width: 400px;
+}
+
+.LevelOfNecessity_5 p {
+    font-size: 120%;
+}
+
+
+.NotificationMessage p {
+    margin: 0;
+    margin-top: 2px;
+    padding-bottom: 20px;
+}
+
+.IconNotification {
+    position: absolute;
+    left: 7px;
+    top: 7px;
+    font-size: 110%;
+}
+
+.IconNotification_Success {
+    color: #1af196;
+}
+
+.IconNotification_Error {
+    color: #f15368;
+}
+
+.IconNotification_Warning {
+    color: #ffaf07;
+}
+
+.BtnCloseNotification {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: none;
+    text-align: right;
+    display: block !important;
+    font-size: 95%;
+    cursor: pointer;
+    transform: rotate(0) !important;
+    color: #ff7e79;
+}
+
+.BtnCloseNotification:hover {
+    color: #ff0c00;
+}
+
+.NotificationSuccess {
+    border: 1px solid rgba(23, 195, 178, 0.35);
+}
+
+.NotificationSuccess p {
+    color: #17c3b2;
+}
+
+.NotificationError {
+    border: 1px solid rgba(255, 69, 88, 0.35);
+}
+
+.NotificationError p {
+    color: #ff4558;
+}
+
+.NotificationWarning {
+    border: 1px solid rgba(255, 209, 51, 0.35);
+}
+
+.NotificationWarning p {
+    color: #ffaf07;
+}
+
+.Success {
+    box-shadow: 0 0 3px #17c3b2;
+    color: #17c3b2;
+}
+
+.Success p {
+    color: #17c3b2;
+}
+
+.Alert {
+    box-shadow: 0 0 3px #ff4558;
+    color: #ff4558;
+}
+
+.Alert p {
+    color: #ff4558;
+}
+
+.Warning {
+    box-shadow: 0 0 3px #ffd070;
+}
+
+.Warning p {
+    color: #e0bc5e;
+}
+
+.AnimationOpacity {
+    animation: AnimationOpacity .15s forwards;
+}
+
+
+._ContainerMenu {
+    background: #f0f0f0;
+    position: fixed;
+    right: 0;
+    height: 100%;
+    width: 220px;
+    top: 0;
+    z-index: 1000;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 10px 0 0 10px;
+}
+
+#ContainerMenuHamburger {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 4;
+    text-align: center;
+    width: 240px;
+    height: 100%;
+    background: #ffffff;
+    display: block;
+}
+
+#ContainerMenuHamburger:before {
+    content: "";
+    position: absolute;
+    left: -10px;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    z-index: -1;
+}
+
+#ContainerMenuHamburger:after {
+    content: "";
+    position: absolute;
+    left: -20px;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: -1;
+}
+
+
+.IconHamburgerMenu {
+    /*float: right;*/
+    margin: 5px;
+    margin-right: 10px;
+    border: none;
+    outline: none;
+    padding: 10px 12px;
+    background: #f3f3f3;
+    box-shadow: -3px -3px 6px #ffffff, 3px 3px 5px #e2e2e2;
+    border-radius: 10px;
+}
+
+.IconHamburgerMenu i {
+    padding: 0;
+    margin: 0;
+    font-size: 150% !important;
+}
+
+.IconCloseMenu {
+    position: absolute;
+    left: 7px;
+    top: 0;
+    font-size: 170% !important;
+    color: #cdcdcd !important;
+}
+
+.MenuIsOpen {
+    transition: all .5s;
+    box-shadow: 0 0 0 100000px rgba(0, 0, 0, .5);
+    visibility: visible;
+}
+
+.MenuIsClose {
+    transition: all .5s;
+    width: 0 !important;
+    padding: 0 !important;
+    visibility: hidden;
+}
+
+._ElementWithTouchScroll {
+    position: absolute;
+}
+
+.BtnSearchSmallMenu {
+    font-size: 90%;
+}
+
+
+[HideContainer] {
+    display: none;
+}
+
+[Link] {
+    color: #4784fa !important;
+    cursor: pointer;
+}
+
+[Link]:hover {
+    color: #1934fa !important;
+}
+
+.CursorDefault {
+    cursor: default !important;
+}
+
+.NumberLikeMember {
+    vertical-align: bottom;
+    display: inline-block;
+    margin: 2px -1px;
+    font-size: 75%;
+}
+
+
+.ContainerRememberMe {
+    margin: 5px;
+    margin-top: 10px;
+    font-size: 85%;
+    display: inline-block;
+    padding: 5px 8px;
+    border-radius: 15px;
+    background: rgba(106, 155, 204, 0.2);
+    box-shadow: 0 3px 6px #aaaaaa, 0 -3px 10px #ffffff;
+}
+
+.ContainerRememberMe * {
+    display: inline-block;
+    margin: 1px;
+    color: #477079;
+}
+
+.InputRememberME {
+    position: relative;
+    cursor: pointer;
+    margin-right: 4px;
+    box-shadow: 0 2px 5px #555555, 0 -2px 8px #ffffff;
+}
+
+.InputRememberME[type=checkbox]:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    top: -1px;
+    left: -1px;
+    border-radius: 3px;
+    background: white;
+}
+
+.InputRememberME[type=checkbox]:checked:after {
+    content: "";
+    display: block;
+    width: 5px;
+    height: 13px;
+    border: solid #0ab468;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: absolute;
+    top: 0;
+    left: 5.5px;
+}
+
+.InputRememberME:focus {
+    outline: none;
+}
+
+.fa-times-circle {
+    color: #f9506c;
+}
+
+.fa-check-circle {
+    color: rgb(25, 182, 120);
+}
+
+.fa-moon {
+    color: #333333;
+}
+
+.fa-sun {
+    color: #ffffff;
+}
+
+
+.ItemForm {
+    padding: 5px;
+}
+
+.NoteInput {
+    font-size: 75%;
+    width: 80%;
+    margin: auto;
+    margin-top: 6px;
+    color: #ff5f66;
+}
+
+.NoteInputWarning {
+    font-size: 75%;
+    width: 80%;
+    margin: auto;
+    margin-top: 6px;
+    color: #f1a127;
+}
+
+.LabelInput {
+    margin: 0;
+    margin-bottom: 2px;
+    color: #656565;
+    margin-right: 6%;
+    font-size: 90%;
+}
+
+.ItemFormInput {
+    margin: auto;
+    background: #f2f2f2;
+    width: 80%;
+    border-radius: 6px;
+    border: 1px solid #dddddd;
+    /*box-shadow: 0 7px 10px #dddddd, 0 -6px 15px #f0f0f0;*/
+    transition: all .2s;
+}
+
+.ItemFormInputFocus {
+    background: #ffffff;
+    /*box-shadow: 0 9px 15px #aaaaaa, 0 -6px 10px #f0f0f0;*/
+}
+
+.ItemFormInput input {
+    width: 88%;
+    padding: 8px 11px;
+    outline: none;
+    border: none;
+    border-radius: inherit;
+    background: inherit;
+}
+
+.ItemFormInput textarea {
+    width: 88%;
+    padding: 8px 11px;
+    outline: none;
+    border: none;
+    border-radius: inherit;
+    background: inherit;
+}
+
+.ItemFormInput select {
+    width: 98%;
+    padding: 8px 11px;
+    outline: none;
+    border: none;
+    border-radius: inherit;
+    background: inherit;
+}
+
+.ItemFormInput i {
+    text-align: left;
+    width: 10%;
+    vertical-align: middle;
+    font-size: 120%;
+    font-weight: bold;
+}
+
+
+.ContainerButtonForm {
+    margin: 10px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.ContainerButtonFormButton {
+    display: inline-block;
+    width: 200px;
+    padding: 7px 5px;
+    border-radius: 5px;
+    background: #ababab;
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+.ContainerButtonFormButtonActive {
+    box-shadow: 0 7px 8px #aaaaaa;
+    cursor: pointer;
+    background: #55b69b;
+    color: white;
+    opacity: 1;
+}
+
+.ContainerButtonForm .ContainerButtonFormButtonActive:hover i {
+    transform: translateX(20px);
+}
+
+.ContainerButtonForm .ContainerButtonFormButtonActive:active {
+    transform: scale(.98);
+}
+
+.ContainerButtonForm div p {
+    display: inline-block;
+    margin: 0;
+    width: 80%;
+    text-align: center;
+    font-size: 110%;
+}
+
+.ContainerButtonForm div i {
+    vertical-align: middle;
+    width: 15%;
+    text-align: center;
+    font-size: 120%;
+    transition: all .5s;
+}
+
+
+#ContainerMessageLogin {
+    padding: 5px;
+    border-radius: 7px;
+    margin: 5px;
+}
+
+#ContainerMessageLogin p {
+    margin: 0;
+}
+
+#ContainerMessageCreate {
+    padding: 5px;
+    border-radius: 7px;
+    margin: 5px;
+}
+
+#ContainerMessageCreate p {
+    margin: 0;
+}
+
+.ContainerMessageSuccess {
+    background: rgba(186, 226, 222, 0.5);
+    color: rgb(24, 121, 103);
+}
+
+.ContainerMessageError {
+    background: rgba(250, 172, 167, 0.5);
+    color: rgba(152, 61, 66, 1);
+}
+
+#BtnChangeTheme {
+    margin-left: 5px;
+    transition: all .15s;
+    cursor: pointer;
+    font-size: 110%;
+}
+
+#BtnChangeTheme:hover {
+    transform: rotate(15deg);
+}
+
+.AnimationRotateClock {
+    animation: AnimationRotateClock 5s infinite;
+}
+
+.ContainerLoadingAJAX {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 99999999;
+}
+
+
+.LoadingCircle {
+    display: block;
+    height: 80px;
+    width: 80px;
+    animation: Animation_LoadingCircle-1 3s linear infinite;
+}
+
+@keyframes Animation_LoadingCircle-1 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.LoadingCircle span {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    height: inherit;
+    width: inherit;
+    clip: rect(40px, 80px, 80px, 0);
+    animation: Animation_LoadingCircle-2 1.5s cubic-bezier(0.770, 0.000, 0.175, 1.000) infinite;
+}
+
+
+@keyframes Animation_LoadingCircle-2 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.LoadingCircle span::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    height: inherit;
+    width: inherit;
+    border: 3px solid transparent;
+    border-top: 6px solid rgb(35, 227, 159);
+    border-radius: 50%;
+    animation: Animation_LoadingCircle-3 1.5s cubic-bezier(0.770, 0.000, 0.175, 1.000) infinite;
+}
+
+
+@keyframes Animation_LoadingCircle-3 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.LoadingCircle span::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    height: inherit;
+    width: inherit;
+    border: 6px solid rgb(39, 245, 171);
+    border-radius: 50%;
+}
+
+
+@keyframes AnimationOpacity {
+    0% {
+        opacity: 0;
+        visibility: visible;
+    }
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes AnimationLoadingDots {
+    to {
+        width: 30px;
+    }
+}
+
+
+@keyframes AnimationPulse {
+    20% {
+        transform: scale(1.1);
+    }
+    40% {
+        transform: scale(.8);
+    }
+    100% {
+        transform: scale(1.0);
+    }
+}
+
+@keyframes AnimationRotate {
+    100% {
+        transform: rotate(-90deg);
+    }
+}
+
+@keyframes AnimationRotateClock {
+
+    70% {
+        transform: rotateZ(365deg);
+    }
+    71% {
+        transform: rotateZ(0);
+    }
+
+}
+
+
+@media screen and (min-width: 1201px) {
+    .ContainerMessage_Alert {
+        width: 35%;
+        left: 32.5%;
+    }
+
+    .TextMessage_Alert {
+        font-size: 100%;
+    }
+
+    .ContainerBlur[Size='Medium'] {
+        width: 70%;
+        right: 15%;
+    }
+
+}
+
+@media screen and (max-width: 1200px) {
+    .ContainerMessage_Alert {
+        width: 45%;
+        left: 27.5%;
+    }
+
+    .TextMessage_Alert {
+        font-size: 95%;
+    }
+
+}
+
+@media screen and (max-width: 992px) {
+    .ContainerMessage_Alert {
+        width: 50%;
+        left: 25%;
+    }
+
+    .TextMessage_Alert {
+        font-size: 90%;
+    }
+
+    .ContainerBlur[Size='Small'] {
+        width: 70%;
+        right: 15%;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 98%;
+    }
+
+    .ContainerMessage_Alert {
+        width: 60%;
+        left: 20%;
+        padding: 80px 30px;
+    }
+
+    .TextMessage_Alert {
+        font-size: 85%;
+    }
+
+    .TextMessage_Alert {
+        width: 100%;
+    }
+
+    .ContainerBlur {
+        width: 80%;
+        right: 10%;
+    }
+
+    .ItemFormInput i {
+        text-align: center;
+        width: 10%;
+        vertical-align: middle;
+        font-size: 120%;
+    }
+
+    .ContainerBlur[Size='Small'] {
+        width: 75%;
+        right: 12.5%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .ContainerMessage_Alert {
+        width: 80%;
+        left: 10%;
+    }
+
+    .TextMessage_Alert {
+        font-size: 90%;
+    }
+
+    .ContainerBlur[Size='Medium'] {
+        width: 85%;
+        right: 7.5%;
+    }
+
+    .ContainerBlur[Size='Small'] {
+        width: 88%;
+        right: 6%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+
+    body {
+        font-size: 96%;
+    }
+
+    .ContainerMessage_Alert {
+        width: 90%;
+        left: 5%;
+    }
+
+    .TextMessage_Alert {
+        font-size: 95%;
+    }
+
+    .ContainerBlur[Size='Medium'] {
+        width: 98%;
+        right: 1%;
+    }
+
+    .ContainerBlur[Size='Small'] {
+        width: 98%;
+        right: 1%;
+    }
+
+}
+
+@media screen and (max-width: 350px) {
+    body {
+        font-size: 94%;
+    }
+
+
+    .ContainerMessage_Alert {
+        width: 95%;
+        left: 2.5%;
+    }
+
+    .TextMessage_Alert {
+        font-size: 88%;
+    }
+
+}
+
+.Element20Rotated {
+    transform: rotate(20deg);
+}
+
+.AnimationRotateY25 {
+    animation: AnimationRotateY25 1.5s forwards;
+}
+
+.AnimationRotate-10 {
+    animation: AnimationRotate-10 2s forwards;
+}
+
+.AnimationRotate0 {
+    animation: AnimationRotate0 1s forwards;
+}
+
+.AnimationOpacity {
+    animation: AnimationOpacity 2s forwards;
+}
+
+.AnimationBottomToTop {
+    animation: AnimationBottomToTop 1.5s ease-out forwards;
+}
+
+.AnimationBottomToTopWithOutOpacity {
+    animation: AnimationBottomToTopWithOutOpacity 1s forwards;
+}
+
+.AnimationTopToBottom {
+    animation: AnimationTopToBottom 1s forwards;
+}
+
+.AnimationContainerMain {
+    animation: AnimationContainerMain 1s forwards;
+}
+
+.AnimationRotateFull {
+    animation: AnimationRotateFull .75s forwards;
+}
+
+.AnimationLeftToRight {
+    animation: AnimationLeftToRight 1.5s forwards;
+}
+
+.AnimationRightToLeft {
+    animation: AnimationRightToLeft 1.5s forwards;
+}
+
+@keyframes AnimationTopToBottom {
+    0% {
+        transform: translateY(-40px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes AnimationRightToLeft {
+    0% {
+        transform: translateX(300px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes AnimationLeftToRight {
+    0% {
+        transform: translateX(-300px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes AnimationRotateFull {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes AnimationRotateY25 {
+    100% {
+        transform: rotateY(25deg);
+    }
+}
+
+@keyframes AnimationOpacity {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes AnimationRotate-10 {
+    100% {
+        transform: rotate(-10deg);
+    }
+}
+
+@keyframes AnimationRotate0 {
+    100% {
+        transform: rotate(0);
+    }
+}
+
+@keyframes AnimationBottomToTop {
+    0% {
+        opacity: .2;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes AnimationToTop {
+    100% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes AnimationRotateClock {
+
+    70% {
+        transform: rotateZ(365deg);
+    }
+    80% {
+        transform: rotateZ(0);
+    }
+}
+
+@keyframes AnimationBottomToTopWithOutOpacity {
+    0% {
+        transform: translateY(20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes AnimationContainerMain {
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+

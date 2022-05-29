@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport'
+          content='width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no'/>
+    <title>
+        {% block Title %}
+        {% endblock %}
+    </title>
+    <link rel="stylesheet" href="{% static 'BootStrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'FontAwesome/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'Css/Base/index.css' %}">
+    <script src="{% static 'Js/Base/index.js' %}"></script>
+    {% block Link %}
+
+    {% endblock %}
+    {% block Css %}
+
+    {% endblock %}
+</head>
+<body>
+{% block Content %}
+
+{% endblock %}
+{% block Js %}
+
+{% endblock %}
+</body>
+</html>

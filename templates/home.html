@@ -1,0 +1,503 @@
+{% extends 'Base/BaseTemplate.html' %}
+{% load static %}
+{% block Title %}
+    Random Music
+{% endblock %}
+
+{% block Css %}
+    <style>
+        body {
+            background: var(--Compl-Red);
+        }
+
+        .header {
+            direction: ltr;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+
+        .c-base {
+            color: var(--ColorBase);
+        }
+
+        .f-kalameblack {
+            font-family: 'KalameBlack';
+        }
+
+        .f-Raleway {
+            font-family: 'Raleway';
+        }
+
+        .f-GoodUnicorn {
+            font-family: 'GoodUnicorn';
+        }
+
+        .size-xl {
+            font-size: 30px;
+        }
+
+        .size-l {
+            font-size: 20px;
+        }
+
+        .btn-active {
+            background: #24d39e !important;
+            color: #fff !important;
+        }
+
+        .main-content {
+            padding: 0 50px;
+            height: 100vh;
+        }
+
+        .section-music {
+            position: relative;
+            background: #201f1f;
+            text-align: center;
+            margin: auto;
+            margin-top: 50px;
+            padding: 25px 50px;
+            border-radius: 10px;
+        }
+
+        .section-music-animation {
+            display: none;
+            font-size: 120%;
+        }
+
+        .section-music-animation i {
+            position: absolute;
+            bottom: 40px;
+            z-index: -1;
+        }
+
+
+        [an-sec-music="1"] {
+            font-size: 200%;
+            color: #ffc63e;
+            animation: AnimationSectionMusicIcon 4s infinite;
+            animation-delay: 2s;
+        }
+
+        [an-sec-music="2"] {
+            font-size: 150%;
+            color: #43ff85;
+            left: 20%;
+            animation: AnimationSectionMusicIcon 4s infinite;
+            animation-delay: 8s;
+        }
+
+        [an-sec-music="3"] {
+            font-size: 220%;
+            color: #1be9ff;
+            right: 20%;
+            animation: AnimationSectionMusicIcon 4s infinite;
+            animation-delay: .5s;
+        }
+
+        [an-sec-music="4"] {
+            font-size: 150%;
+            color: #4058ff;
+            left: 5%;
+            animation: AnimationSectionMusicIcon 4s infinite;
+            animation-delay: 6s;
+        }
+
+        [an-sec-music="5"] {
+            font-size: 110%;
+            color: #ff2aba;
+            right: 25%;
+            animation: AnimationSectionMusicIcon 4s infinite;
+            animation-delay: 2.5s;
+        }
+
+        [an-sec-music="6"] {
+            font-size: 110%;
+            color: #ff3139;
+            right: 0;
+            animation: AnimationSectionMusicIcon 4s infinite linear;
+            animation-delay: 1s;
+        }
+
+        [an-sec-music="7"] {
+            font-size: 220%;
+            color: #fffdf5;
+            left: 30%;
+            animation: AnimationSectionMusicIcon 4s infinite;
+            animation-delay: 3s;
+        }
+
+        [an-sec-music="8"] {
+            font-size: 90%;
+            color: #3f3f3b;
+            left: 49%;
+            animation: AnimationSectionMusicIcon 4s infinite;
+            animation-delay: .5s;
+        }
+
+        [an-sec-music="9"] {
+            font-size: 220%;
+            color: #fffdf5;
+            left: 13%;
+            animation: AnimationSectionMusicIcon 4s infinite;
+            animation-delay: 8s;
+        }
+
+        [an-sec-music="10"] {
+            font-size: 150%;
+            color: #fffdf5;
+            right: 13%;
+            animation: AnimationSectionMusicIcon 4s infinite;
+            animation-delay: 4s;
+        }
+
+        [an-sec-music="11"] {
+            font-size: 250%;
+            color: #ffd137;
+            right: 2%;
+            animation: AnimationSectionMusicIcon 4s infinite;
+            animation-delay: 7s;
+        }
+
+        [an-sec-music="12"] {
+            font-size: 170%;
+            color: #ff3251;
+            left: 0;
+            animation: AnimationSectionMusicIcon 4s infinite;
+            animation-delay: 2.5s;
+        }
+
+        [an-sec-music="13"] {
+            font-size: 210%;
+            color: #ff3251;
+            right: 30%;
+            animation: AnimationSectionMusicIcon 4s infinite;
+            animation-delay: 1s;
+        }
+
+        [an-sec-music="14"] {
+            font-size: 180%;
+            color: #3f3f3b;
+            left: 40%;
+            animation: AnimationSectionMusicIcon 4s infinite;
+            animation-delay: 6s;
+        }
+
+        [an-sec-music="15"] {
+            font-size: 210%;
+            color: #ff25b7;
+            left: 25%;
+            animation: AnimationSectionMusicIcon 4s infinite;
+            animation-delay: 1.5s;
+        }
+
+
+        @keyframes AnimationSectionMusicIcon {
+            100% {
+                bottom: -150%;
+                opacity: 0;
+            }
+        }
+
+
+        .section-music[animation="true"] .section-music-animation {
+            display: block;
+        }
+
+        .section-music button {
+            background: none;
+            outline: none;
+            border: none;
+        }
+
+
+        .music-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #777;
+        }
+
+
+        .music-controls button {
+            color: #ff4c39;
+            font-size: 150%;
+        }
+
+        .music-controls audio {
+            display: none;
+        }
+
+        .music-actions {
+            text-align: left;
+            align-items: center;
+        }
+
+        .music-actions button {
+            font-size: 120%;
+            background: rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            width: 35px;
+            height: 35px;
+            padding: 3px;
+            margin: 0 1px;
+            border-radius: 50%;
+            transition: background-color .3s, color .1s;
+        }
+
+        .music-actions button:hover {
+            background: var(--ColorBase);
+            color: #fff;
+        }
+
+
+        .music-info p {
+            display: inline-block;
+            font-size: 95%;
+            color: #777;
+        }
+
+        .music-info img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+
+
+        .container-controls-play-or-pause button {
+            visibility: hidden;
+            animation: none;
+            font-size: 0%;
+        }
+
+        .container-controls-play-or-pause[type-active="pause"] [type-button="pause"] {
+            font-size: 220%;
+            animation: AnimationChangeBtnPlayPause .5s forwards;
+        }
+
+        .container-controls-play-or-pause[type-active="play"] [type-button="play"] {
+            font-size: 220%;
+            animation: AnimationChangeBtnPlayPause .4s forwards;
+        }
+
+        @keyframes AnimationChangeBtnPlayPause {
+            0% {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            100% {
+                visibility: visible;
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .title-container {
+            font-family: 'KalameBlack';
+            font-size: 60px;
+            text-align: right;
+            color: var(--ColorBase);
+            opacity: .7;
+        }
+
+        .footer {
+            text-align: center;
+
+        }
+
+        .footer p {
+            display: inline-block;
+            margin: 0;
+        }
+
+
+        .title-randommusic {
+            font-family: 'KalameBlack';
+            text-align: center;
+            font-size: 220px;
+            color: var(--ColorBase);
+            text-shadow: 0 5px #fff, 0 15px #111;
+        }
+
+        .label-randommusic {
+            font-family: 'GoodUnicorn';
+            font-weight: bold;
+            font-size: 30px;
+            letter-spacing: 2px;
+            color: #fff;
+        }
+
+        .copy-right {
+            padding: 10px 0;
+        }
+
+        .copy-right a {
+            color: #a52c0d;
+        }
+
+        @media screen and (max-width: 1400px) {
+
+            .title-randommusic {
+                font-size: 180px;
+                line-height: 120px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+
+            .header {
+                margin-bottom: 20px;
+            }
+
+            .main-content {
+                padding: 0;
+            }
+
+            .title-randommusic {
+                font-size: 150px;
+            }
+
+            .section-music {
+                margin-top: 100px;
+                padding: 20px;
+            }
+
+            .music-actions{
+                margin-top: 10px;
+            }
+
+            .border-sm-0 {
+                border: none !important;
+            }
+        }
+
+        @media screen and (max-width: 456px) {
+            .title-randommusic {
+                font-size: 6rem;
+                line-height: 80px;
+            }
+        }
+
+
+    </style>
+{% endblock %}
+
+{% block Content %}
+    <header class="header p-3">
+        <p class="label-randommusic">RM</p>
+    </header>
+    <main class="main-content">
+        <section class="title-randommusic">
+            Random Music
+        </section>
+        <section id="section-music" class="section-music col-12 col-md-10 col-lg-9 col-xl-6" animation="false">
+            <div class="music-controls">
+                <audio src="{% static 'Music/audio.mp3' %}" controls></audio>
+                <div>
+                    <button>
+                        <i class="fa fa-arrow-alt-from-left"></i>
+                    </button>
+                </div>
+                <div id="container-play-or-pause" class="container-controls-play-or-pause" type-active="play">
+                    <button type-button="play">
+                        <i class="fa fa-play"></i>
+                    </button>
+                    <button type-button="pause">
+                        <i class="fa fa-pause"></i>
+                    </button>
+                </div>
+                <div>
+                    <button>
+                        <i class="fa fa-arrow-alt-from-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="d-block d-md-flex justify-content-between align-items-center mt-4 pt-1">
+                <div id="music-info" class="music-info">
+                    <p>Lorem ipsum dolor sit amet, consectetur.</p>
+                    <img src="{% static 'Images/img.jpg' %}" alt="">
+                </div>
+                <div class="music-actions">
+                    <button type-button="download">
+                        <i class="fa fa-arrow-to-bottom"></i>
+                    </button>
+                    <button type-button="repeat">
+                        <i class="fa fa-repeat-1"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="section-music-animation">
+                <i class="fa fa-music" an-sec-music="1"></i>
+                <i class="fa fa-music" an-sec-music="2"></i>
+                <i class="fa fa-music" an-sec-music="3"></i>
+                <i class="fa fa-music" an-sec-music="4"></i>
+                <i class="fa fa-music" an-sec-music="5"></i>
+                <i class="fa fa-music" an-sec-music="6"></i>
+                <i class="fa fa-music" an-sec-music="7"></i>
+                <i class="fa fa-music" an-sec-music="8"></i>
+                <i class="fa fa-music" an-sec-music="9"></i>
+                <i class="fa fa-music" an-sec-music="10"></i>
+                <i class="fa fa-music" an-sec-music="11"></i>
+                <i class="fa fa-music" an-sec-music="12"></i>
+                <i class="fa fa-music" an-sec-music="13"></i>
+                <i class="fa fa-music" an-sec-music="14"></i>
+                <i class="fa fa-music" an-sec-music="15"></i>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="copy-right">
+            <a href="https://fazelmomeni.codevar.ir"><q>Fazel Momeni</q></a>
+        </p>
+    </footer>
+{% endblock %}
+
+{% block Js %}
+    <script>
+        let sectionMusic = document.getElementById('section-music')
+        let containerPlayPause = document.getElementById('container-play-or-pause')
+        let btnPlay = document.querySelector('[type-button="play"]')
+        let btnPause = document.querySelector('[type-button="pause"]')
+
+        btnPlay.addEventListener('click', function () {
+            toggleStatePlayPause('pause')
+        })
+        btnPause.addEventListener('click', function () {
+            toggleStatePlayPause('play')
+        })
+
+        function toggleStatePlayPause(state) {
+            // state = "play" | state = "pause"
+            containerPlayPause.setAttribute('type-active', state)
+            if (state == 'play') {
+                toggleAnimationMusic('false')
+            } else {
+                toggleAnimationMusic('true')
+            }
+        }
+
+        function toggleAnimationMusic(state) {
+            sectionMusic.setAttribute('animation', state)
+        }
+
+
+    </script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
