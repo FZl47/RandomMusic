@@ -220,7 +220,6 @@ function SendAjax(Url, Data = {}, Method = 'POST', Success, Failed) {
 
     function Loading(State) {
         if (State == 'Show') {
-            LockAllElements()
             let ContainerLoading = document.createElement('div')
             let CircleLoading = document.createElement('div')
             ContainerLoading.id = 'ContainerLoadingAJAX'
@@ -231,7 +230,6 @@ function SendAjax(Url, Data = {}, Method = 'POST', Success, Failed) {
             document.body.appendChild(ContainerLoading)
         } else {
             try {
-                UnlockAllElements()
                 document.getElementById('ContainerLoadingAJAX').remove()
             } catch (e) {
             }
@@ -248,7 +246,7 @@ function SendAjax(Url, Data = {}, Method = 'POST', Success, Failed) {
             ShowNotificationMessage('ارتباط با سرور بر قرار نشد ', 'Error', 30000, 2)
         }
     }
-    Loading('Show')
+    //Loading('Show')
     $.ajax(
         {
             url: Url,
@@ -256,19 +254,18 @@ function SendAjax(Url, Data = {}, Method = 'POST', Success, Failed) {
             type: Method,
             success: function (response) {
                 __Redirect__(response)
-                Loading('Hide')
+                //Loading('Hide')
                 Success(response)
             },
             failed: function (response) {
                 __Redirect__(response)
-                Loading('Hide')
+                //Loading('Hide')
                 Failed(response)
             },
             error: function (response) {
                 __Redirect__(response)
-                Loading('Hide')
+                //Loading('Hide')
                 Failed(response)
-                RemoveLoading()
             }
         }
     )

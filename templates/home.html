@@ -7,7 +7,8 @@
 {% block Css %}
     <style>
         body {
-            background: var(--Compl-Red);
+            background: var(--Compl-Black);
+            overflow-x: hidden;
         }
 
         .header {
@@ -43,7 +44,7 @@
         }
 
         .btn-active {
-            background: #24d39e !important;
+            background: var(--Compl-GreenLight) !important;
             color: #fff !important;
         }
 
@@ -52,7 +53,43 @@
             height: 100vh;
         }
 
-        .section-music {
+        .section-loading i {
+            font-size: 50px;
+            color: var(--Compl-GreenLight);
+            animation: AnimationLoading 2.5s infinite;
+        }
+
+        .section-loading p {
+            position: relative;
+            margin-top: 20px;
+            color: #666;
+        }
+
+        .section-loading p:after {
+            content: "";
+            color: inherit;
+            animation: AnimationDots infinite 3s;
+        }
+
+        @keyframes AnimationLoading {
+            60% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes AnimationDots {
+            33% {
+                content: " . ";
+            }
+            66% {
+                content: " .. ";
+            }
+            99% {
+                content: " ... ";
+            }
+        }
+
+        .section {
             position: relative;
             background: #201f1f;
             text-align: center;
@@ -61,6 +98,93 @@
             padding: 25px 50px;
             border-radius: 10px;
         }
+
+        [section-show="true"] {
+            transition: all 1s, width 0s, height 0s;
+        }
+
+        @keyframes AnimationShowSection {
+            100% {
+                visibility: visible;
+            }
+        }
+
+        [section-show="false"] {
+            width: 0 !important;
+            height: 0 !important;
+            padding: 0 !important;
+            margin: 0;
+            overflow: hidden;
+            visibility: 0;
+        }
+
+
+        .filter-music {
+            background: rgba(17, 17, 17, 0.31);
+            margin-bottom: 40px;
+            padding: 5px;
+            border-radius: 10px;
+            white-space: nowrap;
+        }
+
+        .btn-filter {
+            padding: 5px;
+            min-width: 90px;
+            background: #333 !important;
+            color: #808080;
+            margin: 5px 6px;
+            border: none;
+            outline: none;
+            border-radius: 7px;
+            transition: color .3s;
+        }
+
+        .btn-filter[cat-selected="true"] {
+            color: #fff;
+            border: 2px solid var(--Compl-GreenLight);
+        }
+
+        .section-start-play {
+            padding: 50px;
+            overflow: hidden;
+        }
+
+        .btn-start-play-music {
+            position: relative;
+            z-index: 1;
+            padding: 10px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            background: var(--ColorBase);
+            width: 150px;
+            color: #fff;
+            font-size: 120%;
+        }
+
+        .btn-start-play-music:before {
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 100%;
+            left: 0;
+            bottom: 0;
+            z-index: -1;
+            border-radius: inherit;
+            animation: AnimationPulseBtnStartPlay 3s infinite;
+        }
+
+        @keyframes AnimationPulseBtnStartPlay {
+            50% {
+                background: inherit;
+                box-shadow: 0 0 12px rgba(255, 100, 91, 0.6);
+            }
+            100% {
+                transform: scale(1.1) scaleY(1.3);
+                opacity: 0;
+            }
+        }
+
 
         .section-music-animation {
             display: none;
@@ -84,9 +208,9 @@
         [an-sec-music="2"] {
             font-size: 150%;
             color: #43ff85;
-            left: 20%;
+            left: 24%;
             animation: AnimationSectionMusicIcon 4s infinite;
-            animation-delay: 8s;
+            animation-delay: 6s;
         }
 
         [an-sec-music="3"] {
@@ -131,8 +255,8 @@
 
         [an-sec-music="8"] {
             font-size: 90%;
-            color: #3f3f3b;
-            left: 49%;
+            color: #09d368;
+            right: 40%;
             animation: AnimationSectionMusicIcon 4s infinite;
             animation-delay: .5s;
         }
@@ -178,11 +302,11 @@
         }
 
         [an-sec-music="14"] {
-            font-size: 180%;
-            color: #3f3f3b;
-            left: 40%;
+            font-size: 200%;
+            color: #65ff8e;
+            left: 53%;
             animation: AnimationSectionMusicIcon 4s infinite;
-            animation-delay: 6s;
+            animation-delay: 3.5s;
         }
 
         [an-sec-music="15"] {
@@ -248,6 +372,32 @@
             transition: background-color .3s, color .1s;
         }
 
+        .btn-download-animation {
+            overflow: hidden;
+        }
+
+        .btn-download-animation i {
+            transform: translateY(-50px);
+            animation: AnimationBtnDownload .5s forwards;
+        }
+
+        @keyframes AnimationBtnDownload {
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .music-actions [type-button="repeat"].btn-active {
+            animation: AnimationRotateBtnRepeat .5s forwards;
+        }
+
+        @keyframes AnimationRotateBtnRepeat {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+
         .music-actions button:hover {
             background: var(--ColorBase);
             color: #fff;
@@ -305,8 +455,8 @@
         }
 
         .footer {
+            margin-top: 200px;
             text-align: center;
-
         }
 
         .footer p {
@@ -320,7 +470,8 @@
             text-align: center;
             font-size: 220px;
             color: var(--ColorBase);
-            text-shadow: 0 5px #fff, 0 15px #111;
+            text-shadow: 0 5px #fff, 0 15px #000;
+            margin-bottom: 100px;
         }
 
         .label-randommusic {
@@ -361,17 +512,21 @@
                 font-size: 150px;
             }
 
-            .section-music {
-                margin-top: 100px;
+            .section[section-show='true'] {
+                margin-top: 0;
                 padding: 20px;
             }
 
-            .music-actions{
+            .music-actions {
                 margin-top: 10px;
             }
 
             .border-sm-0 {
                 border: none !important;
+            }
+
+            .footer {
+                margin-top: 400px;
             }
         }
 
@@ -379,6 +534,59 @@
             .title-randommusic {
                 font-size: 6rem;
                 line-height: 80px;
+            }
+        }
+
+
+        .DotBackground {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: white;
+            display: inline-block;
+            margin: 5px;
+            position: absolute;
+            transition: all .3s;
+            z-index: -3;
+        }
+
+        .Dot_Round_1 {
+            animation: AnimationDotBackground_Dot_Round_1 2s infinite;
+        }
+
+        .Dot_Round_2 {
+            animation: AnimationDotBackground_Dot_Round_2 4s infinite;
+        }
+
+        .Dot_Round_3 {
+            animation: AnimationDotBackground_Dot_Round_3 1.5s infinite;
+        }
+
+        .Dot_Round_4 {
+            animation: AnimationDotBackground_Dot_Round_4 .8s infinite;
+        }
+
+        @keyframes AnimationDotBackground_Dot_Round_1 {
+            70% {
+                transform: scale(1.35);
+            }
+        }
+
+        @keyframes AnimationDotBackground_Dot_Round_2 {
+            70% {
+                transform: scale(1.4);
+            }
+        }
+
+        @keyframes AnimationDotBackground_Dot_Round_3 {
+            70% {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes AnimationDotBackground_Dot_Round_4 {
+            70% {
+                transform: scale(1.1);
             }
         }
 
@@ -394,9 +602,31 @@
         <section class="title-randommusic">
             Random Music
         </section>
-        <section id="section-music" class="section-music col-12 col-md-10 col-lg-9 col-xl-6" animation="false">
+        <section id="section-loading" class="section section-loading col-12 col-md-10 col-lg-9 col-xl-6"
+                 section-show="false">
+            <i class="far fa-music"></i>
+            <p>در حال بارگیری</p>
+        </section>
+        <section id="section-start-play" class="section section-start-play col-12 col-md-10 col-lg-9 col-xl-6">
+            <div>
+                <button id="btn-start-play-music" class="btn-start-play-music">
+                    پخش
+                    <i class="fa fa-play"></i>
+                </button>
+            </div>
+        </section>
+        <section id="section-music" class="section section-music col-12 col-md-10 col-lg-9 col-xl-6"
+                 section-show="false"
+                 animation="false">
+            <div class="filter-music">
+                {% for Category in Categories %}
+                    <button class="btn-filter" onclick="setCategory(this,'{{ Category.category }}')"
+                            cat-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+                            category="{{ Category.category }}">{{ Category.category_name }}</button>
+                {% endfor %}
+            </div>
             <div class="music-controls">
-                <audio src="{% static 'Music/audio.mp3' %}" controls></audio>
+                <audio src="{% static 'Music/audio.mp3' %}"></audio>
                 <div>
                     <button>
                         <i class="fa fa-arrow-alt-from-left"></i>
@@ -451,38 +681,145 @@
     </main>
     <footer class="footer">
         <p class="copy-right">
-            <a href="https://fazelmomeni.codevar.ir"><q>Fazel Momeni</q></a>
+            <a href="https://fazelmomeni.codevar.ir">Fazel Momeni</a>
         </p>
     </footer>
 {% endblock %}
 
 {% block Js %}
     <script>
+
+        let LIST_MUSICS = []
+        let REPEAT_MUSIC = false
+        let STATE_PLAY_MUSIC = false
+        let CATEGORY_ACTIVE = document.querySelector('[cat-selected="true"]').getAttribute('category') || null
+
+
+        // Sections
+        let sectionLoading = document.getElementById('section-loading')
+        let sectionStartPlay = document.getElementById('section-play-music')
         let sectionMusic = document.getElementById('section-music')
+
+        let btnStartPlay = document.getElementById('btn-start-play-music')
         let containerPlayPause = document.getElementById('container-play-or-pause')
         let btnPlay = document.querySelector('[type-button="play"]')
         let btnPause = document.querySelector('[type-button="pause"]')
+        let btnRepeat = document.querySelector('[type-button="repeat"]')
+        let btnDownload = document.querySelector('[type-button="download"]')
 
+        btnStartPlay.addEventListener('click', function () {
+            getAndPlayMusic()
+        })
         btnPlay.addEventListener('click', function () {
             toggleStatePlayPause('pause')
         })
         btnPause.addEventListener('click', function () {
             toggleStatePlayPause('play')
         })
+        btnRepeat.addEventListener('click', toggleRepeatMusic)
+        btnDownload.addEventListener('click', downloadMusic)
 
         function toggleStatePlayPause(state) {
             // state = "play" | state = "pause"
             containerPlayPause.setAttribute('type-active', state)
             if (state == 'play') {
                 toggleAnimationMusic('false')
+                STATE_PLAY_MUSIC = false
             } else {
                 toggleAnimationMusic('true')
+                STATE_PLAY_MUSIC = true
             }
+        }
+
+
+        function getMusic() {
+            let Music = null
+            SendAjax('/get-music', {
+                'category': CATEGORY_ACTIVE
+            }, 'POST', function (response) {
+                console.log(response)
+                Music = ''
+            })
+        }
+
+        function getAndPlayMusic() {
+            showLoading()
+            getMusic()
+        }
+
+
+        function setCategory(btn, category) {
+            CATEGORY_ACTIVE = category
+            document.querySelector('[cat-selected="true"]').setAttribute('cat-selected', 'false')
+            btn.setAttribute('cat-selected', 'true')
+        }
+
+        function hideAllSection() {
+            let sections = document.querySelectorAll('.section')
+            for (section of sections) {
+                section.setAttribute('section-show', 'false')
+            }
+        }
+
+        function showLoading() {
+            hideAllSection()
+            sectionLoading.setAttribute('section-show', 'true')
+            setTimeout(musicIsReadytoPlay, 1000)
+        }
+
+        function musicIsReadytoPlay() {
+            hideAllSection()
+            sectionMusic.setAttribute('section-show', 'true')
         }
 
         function toggleAnimationMusic(state) {
             sectionMusic.setAttribute('animation', state)
         }
+
+
+        function toggleRepeatMusic() {
+            if (REPEAT_MUSIC) {
+                REPEAT_MUSIC = false
+                btnRepeat.classList.remove('btn-active')
+            } else {
+                REPEAT_MUSIC = true
+                btnRepeat.classList.add('btn-active')
+            }
+        }
+
+        function downloadMusic() {
+            btnDownload.classList.remove('btn-download-animation')
+            setTimeout(function () {
+                btnDownload.classList.add('btn-download-animation')
+            })
+        }
+
+
+        //
+        let ListTypeDotBackground = ['Dot_Round_1', 'Dot_Round_2', 'Dot_Round_3', 'Dot_Round_4']
+
+        function Create_Dot_Animation(Container) {
+            let RandomColor = Math.floor(Math.random() * 16777215).toString(16);
+            let RandomLocationTop = Math.floor(Math.random() * 80)
+            let RandomLocationRight = Math.floor(Math.random() * 100)
+            let RandomIndexListType = Math.floor(Math.random() * ListTypeDotBackground.length);
+            let Dot = document.createElement('span')
+            Dot.className = 'DotBackground'
+            Dot.classList.add(ListTypeDotBackground[RandomIndexListType])
+            Dot.style.background = `#${RandomColor}`
+            Dot.style.boxShadow = `0 0 12px #${RandomColor}`
+            Dot.style.top = RandomLocationTop + '%'
+            Dot.style.right = RandomLocationRight + '%'
+            Container.appendChild(Dot)
+        }
+
+        function Create_Animation_Dot(Container, LenDot = 50) {
+            for (let i = 0; i < LenDot; i++) {
+                Create_Dot_Animation(Container)
+            }
+        }
+
+        Create_Animation_Dot(document.body, 15)
 
 
     </script>
