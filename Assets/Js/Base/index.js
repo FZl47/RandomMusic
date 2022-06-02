@@ -271,8 +271,10 @@ function SendAjax(Url, Data = {}, Method = 'POST', Success, Failed) {
     )
 }
 
+
 let LIST_ALL_NOTIFICATIONS_INSTANCE = []
 let COUNTER_CREATE_NOTIFICATIONS = 0
+
 class ShowNotificationMessage_Model {
     constructor(Text, Type, Timer = 5000, LevelOfNecessity = 3) {
         COUNTER_CREATE_NOTIFICATIONS += 1
@@ -325,13 +327,17 @@ class ShowNotificationMessage_Model {
 }
 
 function RemoveNotification_Func(Index) {
-    LIST_ALL_NOTIFICATIONS_INSTANCE[Index].ContainerMessage.remove()
+    let Instance = LIST_ALL_NOTIFICATIONS_INSTANCE[Index]
+    Instance.ContainerMessage.classList.add('Notification_Removed')
+    setTimeout(function () {
+        Instance.ContainerMessage.remove()
+        delete Instance
+    }, 300)
 }
 
 function ShowNotificationMessage(Text, Type, Timer = 5000, LevelOfNecessity = 3) {
     new ShowNotificationMessage_Model(Text, Type, Timer, LevelOfNecessity)
 }
-
 
 function ValidListInputs(Inputs) {
     let State = true

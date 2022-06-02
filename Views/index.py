@@ -33,6 +33,10 @@ def getMusic(request):
     category = data.get('category') or None
     site = SITE_SOURCE()
     music = site.get_handler_category(category)()
+    if music:
+        STATUS = '200'
+    else:
+        STATUS = '404'
     site.close()
     context['Music'] = music
     context['Status'] = STATUS

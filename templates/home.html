@@ -8,7 +8,7 @@
     <style>
         body {
             background: var(--Compl-Black);
-            overflow-x: hidden;
+            overflow-x: hidden!important;
         }
 
         .header {
@@ -122,17 +122,26 @@
         .filter-music {
             background: rgba(17, 17, 17, 0.31);
             margin-bottom: 40px;
-            padding: 5px;
+            padding: 12px 5px;
             border-radius: 10px;
             white-space: nowrap;
+            overflow-x: auto;
+        }
+
+        .filter-music::-webkit-scrollbar{
+            height: 2px;
+        }
+
+        .filter-music::-webkit-scrollbar-thumb{
+            background: var(--Compl-GreenLight);
         }
 
         .btn-filter {
-            padding: 5px;
+            padding: 8px;
             min-width: 90px;
             background: #333 !important;
             color: #808080;
-            margin: 5px 6px;
+            margin: 5px ;
             border: none;
             outline: none;
             border-radius: 7px;
@@ -320,7 +329,7 @@
 
         @keyframes AnimationSectionMusicIcon {
             100% {
-                bottom: -150%;
+                bottom: -100%;
                 opacity: 0;
             }
         }
@@ -688,8 +697,21 @@
 
 {% block Js %}
     <script>
-
         let LIST_MUSICS = []
+
+        class MusicObj {
+            constructor(data) {
+                LIST_MUSICS.push(LIST_MUSICS)
+                this.music = data.music
+                this.name = data.name
+                this.cover = data.cover
+            }
+
+        }
+    </script>
+    <script>
+
+
         let REPEAT_MUSIC = false
         let STATE_PLAY_MUSIC = false
         let CATEGORY_ACTIVE = document.querySelector('[cat-selected="true"]').getAttribute('category') || null
@@ -697,7 +719,7 @@
 
         // Sections
         let sectionLoading = document.getElementById('section-loading')
-        let sectionStartPlay = document.getElementById('section-play-music')
+        let sectionStartPlay = document.getElementById('section-start-play')
         let sectionMusic = document.getElementById('section-music')
 
         let btnStartPlay = document.getElementById('btn-start-play-music')
@@ -732,19 +754,32 @@
         }
 
 
-        function getMusic() {
-            let Music = null
+        function getMusic(callback = null) {
             SendAjax('/get-music', {
                 'category': CATEGORY_ACTIVE
             }, 'POST', function (response) {
-                console.log(response)
-                Music = ''
+                let status = response.Status
+                if (status == '200') {
+                    let music = response.Music
+                    if (music) {
+                        let musicObj = new MusicObj(music)
+                        callback && callback(music, musicObj)
+                    }
+                } else if (status == '404') {
+                    ShowNotificationMessage('اهنگی یافت نشد', 'Error')
+                    showStartPlay()
+                } else {
+                    ShowNotificationMessage('ارور ناشناخته', 'Error')
+                    showStartPlay()
+                }
             })
         }
 
         function getAndPlayMusic() {
             showLoading()
-            getMusic()
+            getMusic(function (music, musicObj) {
+                 musicIsReadytoPlay()
+            })
         }
 
 
@@ -761,10 +796,14 @@
             }
         }
 
+        function showStartPlay() {
+            hideAllSection()
+            sectionStartPlay.setAttribute('section-show', 'true')
+        }
+
         function showLoading() {
             hideAllSection()
             sectionLoading.setAttribute('section-show', 'true')
-            setTimeout(musicIsReadytoPlay, 1000)
         }
 
         function musicIsReadytoPlay() {

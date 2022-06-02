@@ -1146,25 +1146,37 @@ button:focus {
     z-index: 9999999;
     max-height: 100vh;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .NotificationMessage {
     position: relative;
-    padding: 4px;
-    margin: 10px;
+    padding: 7px;
+    margin: 15px 10px;
     width: 300px;
-    box-shadow: 0 5px 8px rgba(148, 148, 148, 0.35);
+    box-shadow: 0 5px 8px rgba(148, 148, 148, 0.1);
     direction: rtl;
     text-align: center;
-    border-radius: 4px;
-    background: #ffffff;
+    border-radius: 8px / 10px;
     transition: all 1s;
-    animation: ShowNotification_Animation_1 .25s;
+    background: #222;
+    animation: ShowNotification_Animation_1 .3s;
+}
+
+.Notification_Removed {
+    animation: Animation_Notification_Removed .25s forwards;
+}
+
+@keyframes Animation_Notification_Removed {
+    100% {
+        transform: translateX(-300px);
+        opacity: 0;
+    }
 }
 
 @keyframes ShowNotification_Animation_1 {
     0% {
-        transform: translateY(-20px);
+        transform: translateX(100px);
     }
     100% {
         transform: translateX(0) translateY(0);
@@ -1255,7 +1267,7 @@ button:focus {
 }
 
 .NotificationSuccess {
-    border: 1px solid rgba(23, 195, 178, 0.35);
+    box-shadow: 0 3px 1px #1af196;
 }
 
 .NotificationSuccess p {
@@ -1263,7 +1275,7 @@ button:focus {
 }
 
 .NotificationError {
-    border: 1px solid rgba(255, 69, 88, 0.35);
+    box-shadow: 0 3px 1px #f15368;
 }
 
 .NotificationError p {
@@ -1272,6 +1284,7 @@ button:focus {
 
 .NotificationWarning {
     border: 1px solid rgba(255, 209, 51, 0.35);
+    box-shadow: 0 3px 1px #ffaf07;
 }
 
 .NotificationWarning p {
@@ -1303,6 +1316,8 @@ button:focus {
 .Warning p {
     color: #e0bc5e;
 }
+
+
 
 .AnimationOpacity {
     animation: AnimationOpacity .15s forwards;

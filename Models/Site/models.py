@@ -4,6 +4,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium import webdriver
 import os
+import random
 
 
 class MusicSiteBase:
@@ -47,6 +48,8 @@ class MusicFarsi(MusicSiteBase):
     def get_pages_count(self):
         pass
 
+    def get_count_music_in_per_page(self):
+        pass
 
     def get_at_all(self):
         pass
