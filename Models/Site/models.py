@@ -1,7 +1,6 @@
 from django.conf import settings
 from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
 import os
 import random
@@ -30,8 +29,13 @@ class MusicSiteBase:
         # Use Chrome Driver
 
         path = os.path.join(settings.BASE_DIR,f'Driver/{OPERATING_SYSTEM}/chromedriver.exe')
-        driver = webdriver.Chrome(executable_path=path)
+        chrome_options = Options()
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.add_argument('--disable-dev-shm-usage')
+        driver = webdriver.Chrome(executable_path=path, chrome_options=chrome_options)
         return driver
+
 
     def createConnection(self,driver):
         raise NotImplementedError
