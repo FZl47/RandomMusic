@@ -22,6 +22,8 @@ def home(request):
 def getMusic(request):
     random_music = RandomMusic.objects.first()
     if random_music:
+        random_music.count_play_music = int(random_music.count_play_music) + 1
+        random_music.save()
         context = {}
         STATUS = 0
 
