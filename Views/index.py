@@ -12,13 +12,6 @@ SITE_SOURCE = MusicFarsi
 
 def home(request):
     context = {}
-
-    # Selenium
-    # path = os.path.dirname(os.path.abspath(__file__)) + '/chromedriver.exe'
-    # driver = webdriver.Chrome(executable_path=path)
-    # driver.get("https://mahanmusic.net/zanco-cheghadr-jaalebeeh/")
-    #
-    # print(driver.find_element_by_css_selector('[title="دانلود با کيفيت 320"]').get_attribute('href'))
     context['Categories'] = SITE_SOURCE.get_dict_categories()
     return render(request,'home.html',context)
 

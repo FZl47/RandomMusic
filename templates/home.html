@@ -8,7 +8,7 @@
     <style>
         body {
             background: var(--Compl-Black);
-            overflow-x: hidden!important;
+            overflow-x: hidden !important;
         }
 
         .header {
@@ -50,7 +50,7 @@
 
         .main-content {
             padding: 0 50px;
-            height: 100vh;
+            min-height: 100vh;
         }
 
         .section-loading i {
@@ -92,6 +92,7 @@
         .section {
             position: relative;
             background: #201f1f;
+            box-shadow: 0 5px 9px #191919;
             text-align: center;
             margin: auto;
             margin-top: 50px;
@@ -128,20 +129,20 @@
             overflow-x: auto;
         }
 
-        .filter-music::-webkit-scrollbar{
+        .filter-music::-webkit-scrollbar {
             height: 2px;
         }
 
-        .filter-music::-webkit-scrollbar-thumb{
+        .filter-music::-webkit-scrollbar-thumb {
             background: var(--Compl-GreenLight);
         }
 
         .btn-filter {
-            padding: 8px;
+            padding: 7px;
             min-width: 90px;
             background: #333 !important;
             color: #808080;
-            margin: 5px ;
+            margin: 5px;
             border: none;
             outline: none;
             border-radius: 7px;
@@ -168,7 +169,7 @@
             background: var(--ColorBase);
             width: 150px;
             color: #fff;
-            font-size: 120%;
+            font-size: 140%;
         }
 
         .btn-start-play-music:before {
@@ -204,6 +205,7 @@
             position: absolute;
             bottom: 40px;
             z-index: -1;
+            overflow-x: hidden;
         }
 
 
@@ -328,6 +330,7 @@
 
 
         @keyframes AnimationSectionMusicIcon {
+
             100% {
                 bottom: -100%;
                 opacity: 0;
@@ -350,8 +353,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-bottom: 20px;
-            border-bottom: 3px solid #777;
+            padding: 15px 20px;
+            border: 1px solid #333;
+            border-radius: 8px;
         }
 
 
@@ -420,10 +424,11 @@
         }
 
         .music-info img {
-            width: 30px;
-            height: 30px;
+            width: 35px;
+            height: 35px;
             margin-right: 10px;
             border-radius: 50%;
+            object-fit: cover;
         }
 
 
@@ -464,7 +469,7 @@
         }
 
         .footer {
-            margin-top: 200px;
+            margin-top: 300px;
             text-align: center;
         }
 
@@ -480,7 +485,6 @@
             font-size: 220px;
             color: var(--ColorBase);
             text-shadow: 0 5px #fff, 0 15px #000;
-            margin-bottom: 100px;
         }
 
         .label-randommusic {
@@ -504,6 +508,7 @@
             .title-randommusic {
                 font-size: 180px;
                 line-height: 120px;
+                margin-bottom: 100px;
             }
         }
 
@@ -519,6 +524,7 @@
 
             .title-randommusic {
                 font-size: 150px;
+                margin-bottom: 70px;
             }
 
             .section[section-show='true'] {
@@ -635,9 +641,9 @@
                 {% endfor %}
             </div>
             <div class="music-controls">
-                <audio src="{% static 'Music/audio.mp3' %}"></audio>
+                <audio id="music-tag" src="{% static 'Music/audio.mp3' %}"></audio>
                 <div>
-                    <button>
+                    <button id="btn-next-music">
                         <i class="fa fa-arrow-alt-from-left"></i>
                     </button>
                 </div>
@@ -650,15 +656,15 @@
                     </button>
                 </div>
                 <div>
-                    <button>
+                    <button id="btn-previous-music">
                         <i class="fa fa-arrow-alt-from-right"></i>
                     </button>
                 </div>
             </div>
             <div class="d-block d-md-flex justify-content-between align-items-center mt-4 pt-1">
                 <div id="music-info" class="music-info">
-                    <p>Lorem ipsum dolor sit amet, consectetur.</p>
-                    <img src="{% static 'Images/img.jpg' %}" alt="">
+                    <p id="title-music">Unknown - Unknown</p>
+                    <img src="{% static 'Images/img.jpg' %}" alt="Unknown - Unknown" id="cover-music">
                 </div>
                 <div class="music-actions">
                     <button type-button="download">
@@ -690,23 +696,71 @@
     </main>
     <footer class="footer">
         <p class="copy-right">
-            <a href="https://fazelmomeni.codevar.ir">Fazel Momeni</a>
+            <a href="https://fazelmomeni.codevar.ir"><q>Fazel Momeni</q></a>
         </p>
     </footer>
 {% endblock %}
 
 {% block Js %}
     <script>
+        Create_Animation_Dot(document.body, 15)
+    </script>
+    <script>
         let LIST_MUSICS = []
+        let MUSIC_ACTIVE_INDEX = 0
 
         class MusicObj {
             constructor(data) {
-                LIST_MUSICS.push(LIST_MUSICS)
+                LIST_MUSICS.push(this)
+                this.INDEX = LIST_MUSICS.length - 1
+                this.PLACE = LIST_MUSICS.length
+                this.ID = CreateRandomSTR(20)
                 this.music = data.music
                 this.name = data.name
                 this.cover = data.cover
+
+                // Tag
+                this.link = document.createElement('a')
+                this.link.download = true
+                this.link.href = this.music
             }
 
+
+            play(event = false) {
+                try {
+                    if (!event) {
+                        if (music_tag.getAttribute('ID_MUSIC') != this.ID) {
+                            music_tag.src = this.music
+                            music_tag.setAttribute('ID_MUSIC', this.ID)
+                            title_music.innerText = TrunCateLetter(this.name, 30)
+                            cover_music.title = this.name
+                            cover_music.src = this.cover
+                        }
+                        music_tag.play()
+                    }
+                    this.clearTimer()
+                    timer_playing = setInterval(music_is_playing, 1000)
+                    toggleStatePlayPause('pause')
+                } catch (e) {
+                    loadNextMusic()
+                }
+            }
+
+            pause(event = false) {
+                if (!event) {
+                    music_tag.pause()
+                }
+                this.clearTimer()
+                toggleStatePlayPause('play')
+            }
+
+            clearTimer() {
+                clearInterval(timer_playing)
+            }
+
+            download() {
+                this.link.click()
+            }
         }
     </script>
     <script>
@@ -714,6 +768,7 @@
 
         let REPEAT_MUSIC = false
         let STATE_PLAY_MUSIC = false
+        let GETED_NEXT_MUSIC = false
         let CATEGORY_ACTIVE = document.querySelector('[cat-selected="true"]').getAttribute('category') || null
 
 
@@ -722,10 +777,48 @@
         let sectionStartPlay = document.getElementById('section-start-play')
         let sectionMusic = document.getElementById('section-music')
 
+        // Music info
+        let timer_playing
+        let music_tag = document.getElementById('music-tag')
+        let cover_music = document.getElementById('cover-music')
+        let title_music = document.getElementById('title-music')
+
+        music_tag.onpause = function (e) {
+            get_current_music().pause(true)
+        }
+
+        music_tag.onplay = function (e) {
+            get_current_music().play(true)
+        }
+
+        music_tag.onended = function () {
+            if (!REPEAT_MUSIC) {
+                loadNextMusic()
+            } else {
+                get_current_music().play()
+            }
+        }
+
+        music_tag.onerror = function () {
+            loadNextMusic()
+        }
+
+        function music_is_playing() {
+            let total = Math.floor(music_tag.duration)
+            let current = Math.floor(music_tag.currentTime)
+            if ((total - current) < 150 && GETED_NEXT_MUSIC == false) {
+                get_next_music()
+                GETED_NEXT_MUSIC = true
+            }
+        }
+
+
         let btnStartPlay = document.getElementById('btn-start-play-music')
         let containerPlayPause = document.getElementById('container-play-or-pause')
         let btnPlay = document.querySelector('[type-button="play"]')
         let btnPause = document.querySelector('[type-button="pause"]')
+        let btnNext = document.getElementById('btn-next-music')
+        let btnPre = document.getElementById('btn-previous-music')
         let btnRepeat = document.querySelector('[type-button="repeat"]')
         let btnDownload = document.querySelector('[type-button="download"]')
 
@@ -733,11 +826,23 @@
             getAndPlayMusic()
         })
         btnPlay.addEventListener('click', function () {
-            toggleStatePlayPause('pause')
+            get_current_music().play()
         })
         btnPause.addEventListener('click', function () {
-            toggleStatePlayPause('play')
+            get_current_music().pause()
         })
+        btnNext.addEventListener('click', function () {
+            loadNextMusic()
+        })
+        btnPre.addEventListener('click', function () {
+            loadPreviousMusic()
+        })
+
+        function get_current_music() {
+            return LIST_MUSICS[MUSIC_ACTIVE_INDEX]
+        }
+
+
         btnRepeat.addEventListener('click', toggleRepeatMusic)
         btnDownload.addEventListener('click', downloadMusic)
 
@@ -760,10 +865,10 @@
             }, 'POST', function (response) {
                 let status = response.Status
                 if (status == '200') {
-                    let music = response.Music
-                    if (music) {
-                        let musicObj = new MusicObj(music)
-                        callback && callback(music, musicObj)
+                    let music_data = response.Music
+                    if (music_data) {
+                        let musicObj = new MusicObj(music_data)
+                        callback && callback(musicObj)
                     }
                 } else if (status == '404') {
                     ShowNotificationMessage('اهنگی یافت نشد', 'Error')
@@ -777,9 +882,37 @@
 
         function getAndPlayMusic() {
             showLoading()
-            getMusic(function (music, musicObj) {
-                 musicIsReadytoPlay()
+            getMusic(function (music) {
+                musicIsReadytoPlay()
+                MUSIC_ACTIVE_INDEX = music.INDEX
+                music.play()
             })
+        }
+
+        function get_next_music() {
+            getMusic()
+        }
+
+        function loadNextMusic() {
+            if ((get_current_music().PLACE + 1) == LIST_MUSICS.length) {
+                GETED_NEXT_MUSIC = false
+            }
+            if (get_current_music().PLACE == LIST_MUSICS.length) {
+                get_current_music().pause()
+                getAndPlayMusic()
+                GETED_NEXT_MUSIC = false
+            } else {
+                MUSIC_ACTIVE_INDEX += 1
+                get_current_music().play()
+            }
+        }
+
+        function loadPreviousMusic() {
+            MUSIC_ACTIVE_INDEX -= 1
+            if (MUSIC_ACTIVE_INDEX < 0) {
+                MUSIC_ACTIVE_INDEX = 0
+            }
+            get_current_music().play()
         }
 
 
@@ -799,6 +932,7 @@
         function showStartPlay() {
             hideAllSection()
             sectionStartPlay.setAttribute('section-show', 'true')
+            music_tag.pause()
         }
 
         function showLoading() {
@@ -815,7 +949,6 @@
             sectionMusic.setAttribute('animation', state)
         }
 
-
         function toggleRepeatMusic() {
             if (REPEAT_MUSIC) {
                 REPEAT_MUSIC = false
@@ -831,34 +964,8 @@
             setTimeout(function () {
                 btnDownload.classList.add('btn-download-animation')
             })
+            get_current_music().download()
         }
-
-
-        //
-        let ListTypeDotBackground = ['Dot_Round_1', 'Dot_Round_2', 'Dot_Round_3', 'Dot_Round_4']
-
-        function Create_Dot_Animation(Container) {
-            let RandomColor = Math.floor(Math.random() * 16777215).toString(16);
-            let RandomLocationTop = Math.floor(Math.random() * 80)
-            let RandomLocationRight = Math.floor(Math.random() * 100)
-            let RandomIndexListType = Math.floor(Math.random() * ListTypeDotBackground.length);
-            let Dot = document.createElement('span')
-            Dot.className = 'DotBackground'
-            Dot.classList.add(ListTypeDotBackground[RandomIndexListType])
-            Dot.style.background = `#${RandomColor}`
-            Dot.style.boxShadow = `0 0 12px #${RandomColor}`
-            Dot.style.top = RandomLocationTop + '%'
-            Dot.style.right = RandomLocationRight + '%'
-            Container.appendChild(Dot)
-        }
-
-        function Create_Animation_Dot(Container, LenDot = 50) {
-            for (let i = 0; i < LenDot; i++) {
-                Create_Dot_Animation(Container)
-            }
-        }
-
-        Create_Animation_Dot(document.body, 15)
 
 
     </script>

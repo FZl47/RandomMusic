@@ -464,7 +464,6 @@ function SetCookieFunctionality_ShowNotification(Text, Type, Timer = 5000, Level
 }
 
 
-
 function GetCookieFunctionality_ShowNotification() {
     setTimeout(function () {
         let AllCookies = document.cookie.split(';')
@@ -552,16 +551,14 @@ function ConvertCharEnglishToPersianDecode(Text) {
 
 function ConvertCharPersianToEnglishDecode(Text) {
     let Res = ''
-    for (let i of Text){
+    for (let i of Text) {
         try {
             Res += Dict_Char_Persian_English[i]
-        }catch (e) {
+        } catch (e) {
         }
     }
     return Res
 }
-
-
 
 
 /////////////////////////////  Get Key By Val  //////////////////////////
@@ -1512,4 +1509,30 @@ function CreateRandomSTR(Len) {
         Results += Chars.charAt(Math.floor(Math.random() * CharsLen));
     }
     return Results;
+}
+
+
+// ---------------------------- Animation Dot ----------------------------
+
+let ListTypeDotBackground = ['Dot_Round_1', 'Dot_Round_2', 'Dot_Round_3', 'Dot_Round_4']
+
+function Create_Dot_Animation(Container) {
+    let RandomColor = Math.floor(Math.random() * 16777215).toString(16);
+    let RandomLocationTop = Math.floor(Math.random() * 80)
+    let RandomLocationRight = Math.floor(Math.random() * 100)
+    let RandomIndexListType = Math.floor(Math.random() * ListTypeDotBackground.length);
+    let Dot = document.createElement('span')
+    Dot.className = 'DotBackground'
+    Dot.classList.add(ListTypeDotBackground[RandomIndexListType])
+    Dot.style.background = `#${RandomColor}`
+    Dot.style.boxShadow = `0 0 12px #${RandomColor}`
+    Dot.style.top = RandomLocationTop + '%'
+    Dot.style.right = RandomLocationRight + '%'
+    Container.appendChild(Dot)
+}
+
+function Create_Animation_Dot(Container, LenDot = 50) {
+    for (let i = 0; i < LenDot; i++) {
+        Create_Dot_Animation(Container)
+    }
 }
