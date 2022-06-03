@@ -6,6 +6,7 @@ from selenium import webdriver
 import os
 import random
 
+OPERATING_SYSTEM = 'window'
 
 class MusicSiteBase:
 
@@ -27,7 +28,8 @@ class MusicSiteBase:
     def get_driver(self):
         # Selenium
         # Use Chrome Driver
-        path = os.path.join(settings.BASE_DIR,'Driver/chromedriver.exe')
+
+        path = os.path.join(settings.BASE_DIR,f'Driver/{OPERATING_SYSTEM}/chromedriver.exe')
         driver = webdriver.Chrome(executable_path=path)
         return driver
 
