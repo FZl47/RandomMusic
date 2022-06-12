@@ -92,7 +92,7 @@
         .section {
             position: relative;
             background: #201f1f;
-            box-shadow: 0 5px 9px #191919;
+            box-shadow: 0 10px 9px rgba(25, 25, 25, 0.6);
             text-align: center;
             margin: auto;
             margin-top: 50px;
@@ -145,9 +145,13 @@
             margin: 5px;
             border: none;
             outline: none;
-            border-radius: 8px;
+            border-radius: 5px;
             transition: color .3s;
             font-size: 95%;
+        }
+
+        .btn-filter:hover{
+            color: #aaa;
         }
 
         .btn-filter[cat-selected="true"] {
@@ -191,7 +195,7 @@
                 box-shadow: 0 0 12px rgba(255, 100, 91, 0.6);
             }
             100% {
-                transform: scale(1.1) scaleY(1.3);
+                transform: scale(1.2) scaleY(1.3);
                 opacity: 0;
             }
         }
@@ -710,6 +714,10 @@
         let LIST_MUSICS = []
         let MUSIC_ACTIVE_INDEX = 0
 
+        window.onerror = function (e) {
+            console.log(e)
+        }
+
         class MusicObj {
             constructor(data) {
                 LIST_MUSICS.push(this)
@@ -733,7 +741,8 @@
                         if (music_tag.getAttribute('ID_MUSIC') != this.ID) {
                             music_tag.src = this.music
                             music_tag.setAttribute('ID_MUSIC', this.ID)
-                            title_music.innerText = TrunCateLetter(this.name, 30)
+                            title_music.innerText = TrunCateLetter(this.name, 40)
+                            document.title = `Random Music - ${this.name}`
                             cover_music.title = this.name
                             cover_music.src = this.cover
                         }
@@ -792,6 +801,10 @@
             get_current_music().play(true)
         }
 
+        music_tag.onplaying = function () {
+            toggleAnimationMusic('true')
+        }
+
         music_tag.onended = function () {
             if (!REPEAT_MUSIC) {
                 loadNextMusic()
@@ -808,8 +821,8 @@
             let total = Math.floor(music_tag.duration)
             let current = Math.floor(music_tag.currentTime)
             if ((total - current) < 150 && GETED_NEXT_MUSIC == false) {
-                get_next_music()
-                GETED_NEXT_MUSIC = true
+                //get_next_music()
+                //GETED_NEXT_MUSIC = true
             }
         }
 
@@ -854,7 +867,7 @@
                 toggleAnimationMusic('false')
                 STATE_PLAY_MUSIC = false
             } else {
-                toggleAnimationMusic('true')
+                //toggleAnimationMusic('true')
                 STATE_PLAY_MUSIC = true
             }
         }
