@@ -23,7 +23,7 @@ def get_len_list(key):
     return REDIS.llen(key)
 
 def remove_first_element_list(key):
-    REDIS.lpop(key)
+    REDIS.lrem(key,1,REDIS.lindex(key,-1))
     return True
 
 def remove_key(key):
