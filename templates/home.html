@@ -742,6 +742,7 @@
                             music_tag.src = this.music
                             music_tag.setAttribute('ID_MUSIC', this.ID)
                             title_music.innerText = TrunCateLetter(this.name, 40)
+                            title_music.title = this.name
                             document.title = `Random Music - ${this.name}`
                             cover_music.title = this.name
                             cover_music.src = this.cover
@@ -908,7 +909,9 @@
         }
 
         function loadNextMusic() {
-            if ((get_current_music().PLACE + 1) == LIST_MUSICS.length) {
+            document.title = 'Random Music'
+            try {
+                if ((get_current_music().PLACE + 1) == LIST_MUSICS.length) {
                 GETED_NEXT_MUSIC = false
             }
             if (get_current_music().PLACE == LIST_MUSICS.length) {
@@ -919,6 +922,7 @@
                 MUSIC_ACTIVE_INDEX += 1
                 get_current_music().play()
             }
+            }catch (e) {}
         }
 
         function loadPreviousMusic() {

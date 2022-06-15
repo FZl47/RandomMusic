@@ -22,10 +22,6 @@ def home(request):
     return render(request, 'home.html', context)
 
 
-
-def get_music_handle():
-    pass
-
 @csrf_exempt
 @require_POST
 def getMusic(request):

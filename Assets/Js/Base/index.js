@@ -244,6 +244,7 @@ function SendAjax(Url, Data = {}, Method = 'POST', Success, Failed) {
     if (Failed == undefined) {
         Failed = function (response) {
             ShowNotificationMessage('ارتباط با سرور بر قرار نشد ', 'Error', 30000, 2)
+            showStartPlay()
         }
     }
     //Loading('Show')

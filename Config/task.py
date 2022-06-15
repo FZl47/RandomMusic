@@ -13,6 +13,7 @@ def test_speed_method(func):
     return wrapper
 
 
+
 def test_speed(func):
     def wrapper(*args):
         t1 = time.time()
@@ -24,18 +25,14 @@ def test_speed(func):
 
 
 class Loop:
-    def __init__(self):
 
-        try:
-            self.LoopAsync = asyncio.get_event_loop()
-        except:
-            self.LoopAsync = asyncio.new_event_loop()
+    def __init__(self):
 
         self.COUNT_TASK_IN_QUEUE = 0
         self.TASK_IN_QUEUE = False
+        self.IS_RUNNING = False
         self.QUEUE_LIST_TASK = []
         self.LIST_TASK = []
-        self.IS_RUNNING = False
 
     def add(self,task):
         self.LIST_TASK.append(task)
@@ -50,61 +47,29 @@ class Loop:
 
     def completed(self):
         self.IS_RUNNING = False
-        self.TASK_IN_QUEUE = False
         self.list_task_clear()
 
     def start_thread(self):
         if self.IS_RUNNING == False:
             self.IS_RUNNING = True
-            def target():
+            def target(loop):
                 """
                     Thread
                 """
-                for Task in self.LIST_TASK:
+                for Task in loop.LIST_TASK:
                     Task._start_thread()
-
                 # Completed All
-                self.completed()
+                loop.completed()
 
-            t = threading.Thread(target=target)
+            t = threading.Thread(target=target,args=(self,),daemon=True)
             t.start()
             self.THREAD = t
             if self.TASK_IN_QUEUE:
+                self.TASK_IN_QUEUE = False
                 self.start_thread()
         else:
             self.TASK_IN_QUEUE = True
 
-
-
-    def start_thread_async(self):
-        if self.IS_RUNNING == False:
-        #     self.IS_RUNNING = True
-        #
-        #     def create_sub_thread():
-        #         t2 = threading.Thread(target=sub_target)
-        #         t2.start()
-        #         self.THREAD = t2
-        #         t2.join()
-        #
-        #     def sub_target():
-        #         group = []
-        #         for Task in self.LIST_TASK:
-        #             group.append(Task._start_thread_async(self))
-        #         self.completed()
-        #         self.LoopAsync.run_until_complete(asyncio.gather(*group))
-        #         group = []
-        #
-        #     def target():
-        #         """
-        #             Thread
-        #         """
-        #         create_sub_thread()
-        #     t = threading.Thread(target=target)
-        #     t.start()
-        #     self.TASK_IN_QUEUE = False
-            pass
-        else:
-            pass
 
 
 class Task:
@@ -115,15 +80,3 @@ class Task:
 
     def _start_thread(self):
         self._func(*self.args)
-
-
-    def _start_thread_async(self,LoopObj):
-        return LoopObj.LoopAsync.create_task(self._func(*self.args))
-
-
-
-
-
-
-
-
