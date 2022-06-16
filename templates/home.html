@@ -150,7 +150,7 @@
             font-size: 95%;
         }
 
-        .btn-filter:hover{
+        .btn-filter:hover {
             color: #aaa;
         }
 
@@ -814,8 +814,14 @@
             }
         }
 
+        let counter_try_get_music = 0
         music_tag.onerror = function () {
-            loadNextMusic()
+            counter_try_get_music += 1
+            if (counter_try_get_music < 20) {
+                loadNextMusic()
+            }else{
+                ShowNotificationMessage('موزیکی در دسترس نیست لطفا دقایقی دیگر مجددا امتحان کنید','Error',7000,4)
+            }
         }
 
         function music_is_playing() {
@@ -912,17 +918,18 @@
             document.title = 'Random Music'
             try {
                 if ((get_current_music().PLACE + 1) == LIST_MUSICS.length) {
-                GETED_NEXT_MUSIC = false
+                    GETED_NEXT_MUSIC = false
+                }
+                if (get_current_music().PLACE == LIST_MUSICS.length) {
+                    get_current_music().pause()
+                    getAndPlayMusic()
+                    GETED_NEXT_MUSIC = false
+                } else {
+                    MUSIC_ACTIVE_INDEX += 1
+                    get_current_music().play()
+                }
+            } catch (e) {
             }
-            if (get_current_music().PLACE == LIST_MUSICS.length) {
-                get_current_music().pause()
-                getAndPlayMusic()
-                GETED_NEXT_MUSIC = false
-            } else {
-                MUSIC_ACTIVE_INDEX += 1
-                get_current_music().play()
-            }
-            }catch (e) {}
         }
 
         function loadPreviousMusic() {

@@ -116,7 +116,6 @@ class MusicFarsi(MusicSiteBase):
         # Remove word "دانلود" at title
         name = name.replace('دانلود', '')
         music = soup.select_one('.post .download .button a').get('href')
-
         return {
             'cover': cover,
             'name': name,
@@ -166,13 +165,11 @@ class MusicFarsi(MusicSiteBase):
         # Remove word "دانلود" at title
         name = name.replace('دانلود', '')
         music = ''
-        def _get_music_addrs():
-            # Runs until get music
-            try:
-                music = soup.select_one('.post audio.powerpress-mejs-audio').get('src')
-            except:
-                self.get_at_remix()
-        _get_music_addrs()
+        # Runs until get music
+        try:
+            music = soup.select_one('.post audio').get('src')
+        except:
+            self.get_at_remix()
 
         return {
             'cover': cover,
