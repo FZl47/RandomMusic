@@ -45,7 +45,7 @@ class MusicSiteBase:
         loop.start_thread()
 
         len_list_music = redis.get_len_list(addrs)
-        if len_list_music > 30:  
+        if len_list_music > 4:  
             """
                 The music list starts to refresh
             """
@@ -63,7 +63,7 @@ class MusicSiteBase:
             music_packed = list_music[random_num]
             music = redis.unpack_data(music_packed)
         else:
-            music = self.get_handler_category(category)
+            music = self.get_handler_category(category)()
 
         return music
 
