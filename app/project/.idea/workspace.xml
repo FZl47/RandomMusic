@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="41173de1-10ac-4e54-b3c6-978fefc271de" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/RandomMusic_2.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Django_Lib.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Js/Base/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Js/Base/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/task.py" beforeDir="false" afterPath="$PROJECT_DIR$/Config/task.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Driver/linux/chromedriver" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Driver/window/chromedriver.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Site/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Site/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RandomMusic/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/RandomMusic/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirments.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="29erWRKMzM0Ksq90IsKKXguepR4" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.stylelint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.stylelint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.stylelint" value="" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunManager">
+    <configuration name="RandomMusic_3" type="Python.DjangoServer" factoryName="Django server">
+      <module name="RandomMusic_2" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="F:\Project\RandomMusic\V3\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="41173de1-10ac-4e54-b3c6-978fefc271de" name="Default Changelist" comment="" />
+      <created>1653484423649</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1653484423649</updated>
+      <workItem from="1653484426307" duration="1041000" />
+      <workItem from="1653498705288" duration="3237000" />
+      <workItem from="1653547955830" duration="9233000" />
+      <workItem from="1653576545915" duration="7128000" />
+      <workItem from="1653640563214" duration="599000" />
+      <workItem from="1653652847416" duration="1289000" />
+      <workItem from="1653664695740" duration="3409000" />
+      <workItem from="1653734611681" duration="14880000" />
+      <workItem from="1653827209511" duration="9594000" />
+      <workItem from="1653850475836" duration="2330000" />
+      <workItem from="1653859914786" duration="1099000" />
+      <workItem from="1653865599805" duration="2639000" />
+      <workItem from="1653910319942" duration="2249000" />
+      <workItem from="1653937960639" duration="613000" />
+      <workItem from="1653988924030" duration="5732000" />
+      <workItem from="1654012123145" duration="408000" />
+      <workItem from="1654014271800" duration="5405000" />
+      <workItem from="1654028662573" duration="2000" />
+      <workItem from="1654091219342" duration="27499000" />
+      <workItem from="1654174620628" duration="22669000" />
+      <workItem from="1654265433792" duration="4841000" />
+      <workItem from="1654273768615" duration="2206000" />
+      <workItem from="1654280143352" duration="1000" />
+      <workItem from="1654282365355" duration="2000" />
+      <workItem from="1654289938322" duration="38000" />
+      <workItem from="1654696961177" duration="2000000" />
+      <workItem from="1654698967289" duration="1377000" />
+      <workItem from="1654962633166" duration="18510000" />
+      <workItem from="1654992838072" duration="34000" />
+      <workItem from="1655052848818" duration="922000" />
+      <workItem from="1655073149700" duration="1353000" />
+      <workItem from="1655094726334" duration="1527000" />
+      <workItem from="1655137393230" duration="1285000" />
+      <workItem from="1655151601512" duration="6271000" />
+      <workItem from="1655232115154" duration="726000" />
+      <workItem from="1655257256778" duration="6655000" />
+      <workItem from="1655269353510" duration="1304000" />
+      <workItem from="1655271688916" duration="5229000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="414" y="175" width="1092" height="721" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1655274932583">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="175" width="1092" height="721" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1655274932583" />
+    <state x="740" y="261" key="FileChooserDialogImpl" timestamp="1654698963445">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="261" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1654698963445" />
+    <state x="461" y="162" key="SettingsEditor" timestamp="1655269477456">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1655269477456" />
+    <state x="591" y="217" width="737" height="606" key="find.popup" timestamp="1655264761875">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="591" y="217" width="737" height="606" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1655264761875" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1654266563142">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1654266563142" />
+  </component>
+</project>

@@ -1,0 +1,1017 @@
+{% extends 'Base/BaseTemplate.html' %}
+{% load static %}
+{% block Title %}
+    Random Music
+{% endblock %}
+
+{% block Link %}
+<meta name="google-site-verification" content="6N7VnhR6eQaMNgjECDcwixHqiRbJbKFbmnoXhdUKfFc" />
+<meta name="description" content="Random Music - اهنگ رندوم"/>
+<meta name="author" content="Random Music"/>
+{% endblock %}
+
+{% block Css %}
+    <style>
+        body {
+            background: var(--Compl-Black);
+            overflow-x: hidden !important;
+        }
+
+        .header {
+            direction: ltr;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+
+        .c-base {
+            color: var(--ColorBase);
+        }
+
+        .f-kalameblack {
+            font-family: 'KalameBlack';
+        }
+
+        .f-Raleway {
+            font-family: 'Raleway';
+        }
+
+        .f-GoodUnicorn {
+            font-family: 'GoodUnicorn';
+        }
+
+        .size-xl {
+            font-size: 30px;
+        }
+
+        .size-l {
+            font-size: 20px;
+        }
+
+        .btn-active {
+            background: var(--Compl-GreenLight) !important;
+            color: #fff !important;
+        }
+
+        .main-content {
+            padding: 0 50px;
+            min-height: 100vh;
+        }
+
+        .section-loading i {
+            font-size: 50px;
+            color: var(--Compl-GreenLight);
+            animation: AnimationLoading 2.5s infinite;
+        }
+
+        .section-loading p {
+            position: relative;
+            margin-top: 20px;
+            color: #666;
+        }
+
+        .section-loading p:after {
+            content: "";
+            color: inherit;
+            animation: AnimationDots infinite 3s;
+        }
+
+        @keyframes AnimationLoading {
+            60% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes AnimationDots {
+            33% {
+                content: " . ";
+            }
+            66% {
+                content: " .. ";
+            }
+            99% {
+                content: " ... ";
+            }
+        }
+
+        .section {
+            position: relative;
+            background: #201f1f;
+            box-shadow: 0 10px 9px rgba(25, 25, 25, 0.6);
+            text-align: center;
+            margin: auto;
+            margin-top: 50px;
+            padding: 25px 50px;
+            border-radius: 10px;
+        }
+
+        [section-show="true"] {
+            transition: all 1s, width 0s, height 0s;
+        }
+
+        @keyframes AnimationShowSection {
+            100% {
+                visibility: visible;
+            }
+        }
+
+        [section-show="false"] {
+            width: 0 !important;
+            height: 0 !important;
+            padding: 0 !important;
+            margin: 0;
+            overflow: hidden;
+            visibility: 0;
+        }
+
+
+        .filter-music {
+            background: rgba(17, 17, 17, 0.31);
+            margin-bottom: 40px;
+            padding: 12px 5px;
+            border-radius: 10px;
+            white-space: nowrap;
+            overflow-x: auto;
+        }
+
+        .filter-music::-webkit-scrollbar {
+            height: 2px;
+        }
+
+        .filter-music::-webkit-scrollbar-thumb {
+            background: var(--Compl-GreenLight);
+        }
+
+        .btn-filter {
+            padding: 7px;
+            min-width: 90px;
+            background: #333 !important;
+            color: #808080;
+            margin: 5px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            transition: color .3s;
+            font-size: 95%;
+        }
+
+        .btn-filter:hover {
+            color: #aaa;
+        }
+
+        .btn-filter[cat-selected="true"] {
+            color: #fff;
+            border: 2px solid var(--Compl-GreenLight);
+        }
+
+        .section-start-play {
+            padding: 50px;
+            overflow: hidden;
+        }
+
+        .btn-start-play-music {
+            position: relative;
+            z-index: 1;
+            padding: 10px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            background: var(--ColorBase);
+            width: 150px;
+            color: #fff;
+            font-size: 140%;
+        }
+
+        .btn-start-play-music:before {
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 100%;
+            left: 0;
+            bottom: 0;
+            z-index: -1;
+            border-radius: inherit;
+            animation: AnimationPulseBtnStartPlay 3s infinite;
+        }
+
+        @keyframes AnimationPulseBtnStartPlay {
+            50% {
+                background: inherit;
+                box-shadow: 0 0 12px rgba(255, 100, 91, 0.6);
+            }
+            100% {
+                transform: scale(1.2) scaleY(1.3);
+                opacity: 0;
+            }
+        }
+
+
+        .section-music-animation {
+            display: none;
+            font-size: 120%;
+        }
+
+        .section-music-animation i {
+            position: absolute;
+            bottom: 40px;
+            z-index: -1;
+            overflow-x: hidden;
+        }
+
+
+        [an-sec-music="1"] {
+            font-size: 200%;
+            color: #ffc63e;
+            animation: AnimationSectionMusicIcon 4s infinite;
+            animation-delay: 2s;
+        }
+
+        [an-sec-music="2"] {
+            font-size: 150%;
+            color: #43ff85;
+            left: 24%;
+            animation: AnimationSectionMusicIcon 4s infinite;
+            animation-delay: 6s;
+        }
+
+        [an-sec-music="3"] {
+            font-size: 220%;
+            color: #1be9ff;
+            right: 20%;
+            animation: AnimationSectionMusicIcon 4s infinite;
+            animation-delay: .5s;
+        }
+
+        [an-sec-music="4"] {
+            font-size: 150%;
+            color: #4058ff;
+            left: 5%;
+            animation: AnimationSectionMusicIcon 4s infinite;
+            animation-delay: 6s;
+        }
+
+        [an-sec-music="5"] {
+            font-size: 110%;
+            color: #ff2aba;
+            right: 25%;
+            animation: AnimationSectionMusicIcon 4s infinite;
+            animation-delay: 2.5s;
+        }
+
+        [an-sec-music="6"] {
+            font-size: 110%;
+            color: #ff3139;
+            right: 0;
+            animation: AnimationSectionMusicIcon 4s infinite linear;
+            animation-delay: 1s;
+        }
+
+        [an-sec-music="7"] {
+            font-size: 220%;
+            color: #fffdf5;
+            left: 30%;
+            animation: AnimationSectionMusicIcon 4s infinite;
+            animation-delay: 3s;
+        }
+
+        [an-sec-music="8"] {
+            font-size: 90%;
+            color: #09d368;
+            right: 40%;
+            animation: AnimationSectionMusicIcon 4s infinite;
+            animation-delay: .5s;
+        }
+
+        [an-sec-music="9"] {
+            font-size: 220%;
+            color: #fffdf5;
+            left: 13%;
+            animation: AnimationSectionMusicIcon 4s infinite;
+            animation-delay: 8s;
+        }
+
+        [an-sec-music="10"] {
+            font-size: 150%;
+            color: #fffdf5;
+            right: 13%;
+            animation: AnimationSectionMusicIcon 4s infinite;
+            animation-delay: 4s;
+        }
+
+        [an-sec-music="11"] {
+            font-size: 250%;
+            color: #ffd137;
+            right: 2%;
+            animation: AnimationSectionMusicIcon 4s infinite;
+            animation-delay: 7s;
+        }
+
+        [an-sec-music="12"] {
+            font-size: 170%;
+            color: #ff3251;
+            left: 0;
+            animation: AnimationSectionMusicIcon 4s infinite;
+            animation-delay: 2.5s;
+        }
+
+        [an-sec-music="13"] {
+            font-size: 210%;
+            color: #ff3251;
+            right: 30%;
+            animation: AnimationSectionMusicIcon 4s infinite;
+            animation-delay: 1s;
+        }
+
+        [an-sec-music="14"] {
+            font-size: 200%;
+            color: #65ff8e;
+            left: 53%;
+            animation: AnimationSectionMusicIcon 4s infinite;
+            animation-delay: 3.5s;
+        }
+
+        [an-sec-music="15"] {
+            font-size: 210%;
+            color: #ff25b7;
+            left: 25%;
+            animation: AnimationSectionMusicIcon 4s infinite;
+            animation-delay: 1.5s;
+        }
+
+
+        @keyframes AnimationSectionMusicIcon {
+
+            100% {
+                bottom: -100%;
+                opacity: 0;
+            }
+        }
+
+
+        .section-music[animation="true"] .section-music-animation {
+            display: block;
+        }
+
+        .section-music button {
+            background: none;
+            outline: none;
+            border: none;
+        }
+
+
+        .music-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border: 1px solid #333;
+            border-radius: 8px;
+        }
+
+
+        .music-controls button {
+            color: #ff4c39;
+            font-size: 150%;
+        }
+
+        .music-controls audio {
+            display: none;
+        }
+
+        .music-actions {
+            text-align: left;
+            align-items: center;
+        }
+
+        .music-actions button {
+            font-size: 120%;
+            background: rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            width: 35px;
+            height: 35px;
+            padding: 3px;
+            margin: 0 1px;
+            border-radius: 50%;
+            transition: background-color .3s, color .1s;
+        }
+
+        .btn-download-animation {
+            overflow: hidden;
+        }
+
+        .btn-download-animation i {
+            transform: translateY(-50px);
+            animation: AnimationBtnDownload .5s forwards;
+        }
+
+        @keyframes AnimationBtnDownload {
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .music-actions [type-button="repeat"].btn-active {
+            animation: AnimationRotateBtnRepeat .5s forwards;
+        }
+
+        @keyframes AnimationRotateBtnRepeat {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        .music-actions button:hover {
+            background: var(--ColorBase);
+            color: #fff;
+        }
+
+
+        .music-info p {
+            display: inline-block;
+            font-size: 95%;
+            color: #777;
+        }
+
+        .music-info img {
+            width: 35px;
+            height: 35px;
+            margin-right: 10px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+
+        .container-controls-play-or-pause button {
+            visibility: hidden;
+            animation: none;
+            font-size: 0%;
+        }
+
+        .container-controls-play-or-pause[type-active="pause"] [type-button="pause"] {
+            font-size: 220%;
+            animation: AnimationChangeBtnPlayPause .5s forwards;
+        }
+
+        .container-controls-play-or-pause[type-active="play"] [type-button="play"] {
+            font-size: 220%;
+            animation: AnimationChangeBtnPlayPause .4s forwards;
+        }
+
+        @keyframes AnimationChangeBtnPlayPause {
+            0% {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            100% {
+                visibility: visible;
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .title-container {
+            font-family: 'KalameBlack';
+            font-size: 60px;
+            text-align: right;
+            color: var(--ColorBase);
+            opacity: .7;
+        }
+
+        .footer {
+            margin-top: 300px;
+            text-align: center;
+        }
+
+        .footer p {
+            display: inline-block;
+            margin: 0;
+        }
+
+
+        .title-randommusic {
+            font-family: 'KalameBlack';
+            text-align: center;
+            font-size: 220px;
+            color: var(--ColorBase);
+            text-shadow: 0 5px #fff, 0 15px #000;
+        }
+
+        .label-randommusic {
+            font-family: 'GoodUnicorn';
+            font-weight: bold;
+            font-size: 30px;
+            letter-spacing: 2px;
+            color: #fff;
+        }
+
+        .copy-right {
+            padding: 10px 0;
+        }
+
+        .copy-right a {
+            color: #a52c0d;
+        }
+
+        @media screen and (max-width: 1400px) {
+
+            .title-randommusic {
+                font-size: 180px;
+                line-height: 120px;
+                margin-bottom: 100px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+
+            .header {
+                margin-bottom: 20px;
+            }
+
+            .main-content {
+                padding: 0;
+            }
+
+            .title-randommusic {
+                font-size: 150px;
+                margin-bottom: 70px;
+            }
+
+            .section[section-show='true'] {
+                margin-top: 0;
+                padding: 20px;
+            }
+
+            .music-actions {
+                margin-top: 10px;
+            }
+
+            .border-sm-0 {
+                border: none !important;
+            }
+
+            .footer {
+                margin-top: 400px;
+            }
+        }
+
+        @media screen and (max-width: 456px) {
+            .title-randommusic {
+                font-size: 6rem;
+                line-height: 80px;
+            }
+        }
+
+
+        .DotBackground {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: white;
+            display: inline-block;
+            margin: 5px;
+            position: absolute;
+            transition: all .3s;
+            z-index: -3;
+        }
+
+        .Dot_Round_1 {
+            animation: AnimationDotBackground_Dot_Round_1 2s infinite;
+        }
+
+        .Dot_Round_2 {
+            animation: AnimationDotBackground_Dot_Round_2 4s infinite;
+        }
+
+        .Dot_Round_3 {
+            animation: AnimationDotBackground_Dot_Round_3 1.5s infinite;
+        }
+
+        .Dot_Round_4 {
+            animation: AnimationDotBackground_Dot_Round_4 .8s infinite;
+        }
+
+        @keyframes AnimationDotBackground_Dot_Round_1 {
+            70% {
+                transform: scale(1.35);
+            }
+        }
+
+        @keyframes AnimationDotBackground_Dot_Round_2 {
+            70% {
+                transform: scale(1.4);
+            }
+        }
+
+        @keyframes AnimationDotBackground_Dot_Round_3 {
+            70% {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes AnimationDotBackground_Dot_Round_4 {
+            70% {
+                transform: scale(1.1);
+            }
+        }
+
+
+    </style>
+{% endblock %}
+
+{% block Content %}
+    <header class="header p-3">
+        <p class="label-randommusic">RM</p>
+    </header>
+    <main class="main-content">
+        <section class="title-randommusic">
+            Random Music
+        </section>
+        <section id="section-loading" class="section section-loading col-12 col-md-10 col-lg-9 col-xl-6"
+                 section-show="false">
+            <i class="far fa-music"></i>
+            <p>در حال بارگیری</p>
+        </section>
+        <section id="section-start-play" class="section section-start-play col-12 col-md-10 col-lg-9 col-xl-6">
+            <div>
+                <button id="btn-start-play-music" class="btn-start-play-music">
+                    پخش
+                    <i class="fa fa-play"></i>
+                </button>
+            </div>
+        </section>
+        <section id="section-music" class="section section-music col-12 col-md-10 col-lg-9 col-xl-6"
+                 section-show="false"
+                 animation="false">
+            <div class="filter-music">
+                {% for Category in Categories %}
+                    <button class="btn-filter" onclick="setCategory(this,'{{ Category.category }}')"
+                            cat-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+                            category="{{ Category.category }}">{{ Category.category_name }}</button>
+                {% endfor %}
+            </div>
+            <div class="music-controls">
+                <audio id="music-tag" src="{% static 'Music/audio.mp3' %}"></audio>
+                <div>
+                    <button id="btn-next-music">
+                        <i class="fa fa-arrow-alt-from-left"></i>
+                    </button>
+                </div>
+                <div id="container-play-or-pause" class="container-controls-play-or-pause" type-active="play">
+                    <button type-button="play">
+                        <i class="fa fa-play"></i>
+                    </button>
+                    <button type-button="pause">
+                        <i class="fa fa-pause"></i>
+                    </button>
+                </div>
+                <div>
+                    <button id="btn-previous-music">
+                        <i class="fa fa-arrow-alt-from-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="d-block d-md-flex justify-content-between align-items-center mt-4 pt-1">
+                <div id="music-info" class="music-info">
+                    <p id="title-music">Unknown - Unknown</p>
+                    <img src="{% static 'Images/img.jpg' %}" alt="Unknown - Unknown" id="cover-music">
+                </div>
+                <div class="music-actions">
+                    <button type-button="download">
+                        <i class="fa fa-arrow-to-bottom"></i>
+                    </button>
+                    <button type-button="repeat">
+                        <i class="fa fa-repeat-1"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="section-music-animation">
+                <i class="fa fa-music" an-sec-music="1"></i>
+                <i class="fa fa-music" an-sec-music="2"></i>
+                <i class="fa fa-music" an-sec-music="3"></i>
+                <i class="fa fa-music" an-sec-music="4"></i>
+                <i class="fa fa-music" an-sec-music="5"></i>
+                <i class="fa fa-music" an-sec-music="6"></i>
+                <i class="fa fa-music" an-sec-music="7"></i>
+                <i class="fa fa-music" an-sec-music="8"></i>
+                <i class="fa fa-music" an-sec-music="9"></i>
+                <i class="fa fa-music" an-sec-music="10"></i>
+                <i class="fa fa-music" an-sec-music="11"></i>
+                <i class="fa fa-music" an-sec-music="12"></i>
+                <i class="fa fa-music" an-sec-music="13"></i>
+                <i class="fa fa-music" an-sec-music="14"></i>
+                <i class="fa fa-music" an-sec-music="15"></i>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="copy-right">
+            <a href="https://fazelmomeni.codevar.ir"><q>Fazel Momeni</q></a>
+        </p>
+    </footer>
+{% endblock %}
+
+{% block Js %}
+    <script>
+        Create_Animation_Dot(document.body, 15)
+    </script>
+    <script>
+        let LIST_MUSICS = []
+        let MUSIC_ACTIVE_INDEX = 0
+
+        window.onerror = function (e) {
+            console.log(e)
+        }
+
+        class MusicObj {
+            constructor(data) {
+                LIST_MUSICS.push(this)
+                this.INDEX = LIST_MUSICS.length - 1
+                this.PLACE = LIST_MUSICS.length
+                this.ID = CreateRandomSTR(20)
+                this.music = data.music
+                this.name = data.name
+                this.cover = data.cover
+
+                // Tag
+                this.link = document.createElement('a')
+                this.link.download = true
+                this.link.href = this.music
+            }
+
+
+            play(event = false) {
+                try {
+                    if (!event) {
+                        if (music_tag.getAttribute('ID_MUSIC') != this.ID) {
+                            music_tag.src = this.music
+                            music_tag.setAttribute('ID_MUSIC', this.ID)
+                            title_music.innerText = TrunCateLetter(this.name, 40)
+                            title_music.title = this.name
+                            document.title = `Random Music - ${this.name}`
+                            cover_music.title = this.name
+                            cover_music.src = this.cover
+                        }
+                        music_tag.play()
+                    }
+                    this.clearTimer()
+                    timer_playing = setInterval(music_is_playing, 1000)
+                    toggleStatePlayPause('pause')
+                } catch (e) {
+                    loadNextMusic()
+                }
+            }
+
+            pause(event = false) {
+                if (!event) {
+                    music_tag.pause()
+                }
+                this.clearTimer()
+                toggleStatePlayPause('play')
+            }
+
+            clearTimer() {
+                clearInterval(timer_playing)
+            }
+
+            download() {
+                this.link.click()
+            }
+        }
+    </script>
+    <script>
+
+
+        let REPEAT_MUSIC = false
+        let STATE_PLAY_MUSIC = false
+        let GETED_NEXT_MUSIC = false
+        let CATEGORY_ACTIVE = document.querySelector('[cat-selected="true"]').getAttribute('category') || null
+
+
+        // Sections
+        let sectionLoading = document.getElementById('section-loading')
+        let sectionStartPlay = document.getElementById('section-start-play')
+        let sectionMusic = document.getElementById('section-music')
+
+        // Music info
+        let timer_playing
+        let music_tag = document.getElementById('music-tag')
+        let cover_music = document.getElementById('cover-music')
+        let title_music = document.getElementById('title-music')
+
+        music_tag.onpause = function (e) {
+            get_current_music().pause(true)
+        }
+
+        music_tag.onplay = function (e) {
+            get_current_music().play(true)
+        }
+
+        music_tag.onplaying = function () {
+            toggleAnimationMusic('true')
+        }
+
+        music_tag.onended = function () {
+            if (!REPEAT_MUSIC) {
+                loadNextMusic()
+            } else {
+                get_current_music().play()
+            }
+        }
+
+        let counter_try_get_music = 0
+        music_tag.onerror = function () {
+            counter_try_get_music += 1
+            if (counter_try_get_music < 20) {
+                loadNextMusic()
+            }else{
+                ShowNotificationMessage('موزیکی در دسترس نیست لطفا دقایقی دیگر مجددا امتحان کنید','Error',7000,4)
+            }
+        }
+
+        function music_is_playing() {
+            let total = Math.floor(music_tag.duration)
+            let current = Math.floor(music_tag.currentTime)
+            if ((total - current) < 150 && GETED_NEXT_MUSIC == false) {
+                //get_next_music()
+                //GETED_NEXT_MUSIC = true
+            }
+        }
+
+
+        let btnStartPlay = document.getElementById('btn-start-play-music')
+        let containerPlayPause = document.getElementById('container-play-or-pause')
+        let btnPlay = document.querySelector('[type-button="play"]')
+        let btnPause = document.querySelector('[type-button="pause"]')
+        let btnNext = document.getElementById('btn-next-music')
+        let btnPre = document.getElementById('btn-previous-music')
+        let btnRepeat = document.querySelector('[type-button="repeat"]')
+        let btnDownload = document.querySelector('[type-button="download"]')
+
+        btnStartPlay.addEventListener('click', function () {
+            getAndPlayMusic()
+        })
+        btnPlay.addEventListener('click', function () {
+            get_current_music().play()
+        })
+        btnPause.addEventListener('click', function () {
+            get_current_music().pause()
+        })
+        btnNext.addEventListener('click', function () {
+            loadNextMusic()
+        })
+        btnPre.addEventListener('click', function () {
+            loadPreviousMusic()
+        })
+
+        function get_current_music() {
+            return LIST_MUSICS[MUSIC_ACTIVE_INDEX]
+        }
+
+
+        btnRepeat.addEventListener('click', toggleRepeatMusic)
+        btnDownload.addEventListener('click', downloadMusic)
+
+        function toggleStatePlayPause(state) {
+            // state = "play" | state = "pause"
+            containerPlayPause.setAttribute('type-active', state)
+            if (state == 'play') {
+                toggleAnimationMusic('false')
+                STATE_PLAY_MUSIC = false
+            } else {
+                //toggleAnimationMusic('true')
+                STATE_PLAY_MUSIC = true
+            }
+        }
+
+
+        function getMusic(callback = null) {
+            SendAjax('/get-music', {
+                'category': CATEGORY_ACTIVE
+            }, 'POST', function (response) {
+                let status = response.Status
+                if (status == '200') {
+                    let music_data = response.Music
+                    if (music_data) {
+                        let musicObj = new MusicObj(music_data)
+                        callback && callback(musicObj)
+                    }
+                } else if (status == '404') {
+                    ShowNotificationMessage('اهنگی یافت نشد', 'Error')
+                    showStartPlay()
+                } else {
+                    ShowNotificationMessage('ارور ناشناخته', 'Error')
+                    showStartPlay()
+                }
+            })
+        }
+
+        function getAndPlayMusic() {
+            showLoading()
+            getMusic(function (music) {
+                musicIsReadytoPlay()
+                MUSIC_ACTIVE_INDEX = music.INDEX
+                music.play()
+            })
+        }
+
+        function get_next_music() {
+            getMusic()
+        }
+
+        function loadNextMusic() {
+            document.title = 'Random Music'
+            try {
+                if ((get_current_music().PLACE + 1) == LIST_MUSICS.length) {
+                    GETED_NEXT_MUSIC = false
+                }
+                if (get_current_music().PLACE == LIST_MUSICS.length) {
+                    get_current_music().pause()
+                    getAndPlayMusic()
+                    GETED_NEXT_MUSIC = false
+                } else {
+                    MUSIC_ACTIVE_INDEX += 1
+                    get_current_music().play()
+                }
+            } catch (e) {
+            }
+        }
+
+        function loadPreviousMusic() {
+            MUSIC_ACTIVE_INDEX -= 1
+            if (MUSIC_ACTIVE_INDEX < 0) {
+                MUSIC_ACTIVE_INDEX = 0
+            }
+            get_current_music().play()
+        }
+
+
+        function setCategory(btn, category) {
+            CATEGORY_ACTIVE = category
+            document.querySelector('[cat-selected="true"]').setAttribute('cat-selected', 'false')
+            btn.setAttribute('cat-selected', 'true')
+        }
+
+        function hideAllSection() {
+            let sections = document.querySelectorAll('.section')
+            for (section of sections) {
+                section.setAttribute('section-show', 'false')
+            }
+        }
+
+        function showStartPlay() {
+            hideAllSection()
+            sectionStartPlay.setAttribute('section-show', 'true')
+            music_tag.pause()
+        }
+
+        function showLoading() {
+            hideAllSection()
+            sectionLoading.setAttribute('section-show', 'true')
+        }
+
+        function musicIsReadytoPlay() {
+            hideAllSection()
+            sectionMusic.setAttribute('section-show', 'true')
+        }
+
+        function toggleAnimationMusic(state) {
+            sectionMusic.setAttribute('animation', state)
+        }
+
+        function toggleRepeatMusic() {
+            if (REPEAT_MUSIC) {
+                REPEAT_MUSIC = false
+                btnRepeat.classList.remove('btn-active')
+            } else {
+                REPEAT_MUSIC = true
+                btnRepeat.classList.add('btn-active')
+            }
+        }
+
+        function downloadMusic() {
+            btnDownload.classList.remove('btn-download-animation')
+            setTimeout(function () {
+                btnDownload.classList.add('btn-download-animation')
+            })
+            get_current_music().download()
+        }
+
+
+    </script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

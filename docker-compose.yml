@@ -1,0 +1,47 @@
+version: '3.7'
+
+services:
+  application:
+    build: ./app
+    container_name: app_randommusic
+    restart: "always"
+    expose:
+      - "5000"
+
+    environment:
+      - "REDIS_HOST=redis"
+      - "REDIS_PORT=6379"
+      
+    volumes:
+      - type: "bind"
+        source: "./app/assets"
+        target: "/assets"
+
+      - type: "bind"
+        source: "./app/media"
+        target: "/media"
+
+
+  nginx:
+    build: ./nginx
+    container_name: nginx_randommusic
+    restart: "always"
+    ports:
+      - "8010:80"
+      - "4431:443"
+ 
+    volumes:
+      - type: "bind"
+        source: "./app/assets"
+        target: "/assets"
+
+      - type: "bind"
+        source: "./app/media"
+        target: "/media"
+
+  redis:
+    restart: "always"
+    image: "redis"
+    container_name: "redis"
+    expose:
+      - "6379"
